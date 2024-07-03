@@ -19,7 +19,7 @@ function Contact() {
   };
 
   return (
-    <section className="p-4">
+    <section className="p-4" id="contact">
       <div className="container mx-auto">
         <h2 className="text-2xl font-bold mb-4">Contact Me</h2>
         <form onSubmit={handleSubmit} className="space-y-4">

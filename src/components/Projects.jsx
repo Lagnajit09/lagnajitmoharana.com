@@ -18,7 +18,7 @@ function Projects() {
   ];
 
   return (
-    <section className="bg-gray-100 p-4">
+    <section className="bg-gray-100 p-4" id="projects">
       <div className="container mx-auto">
         <h2 className="text-2xl font-bold">Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">

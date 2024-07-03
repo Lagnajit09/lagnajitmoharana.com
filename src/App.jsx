@@ -1,20 +1,20 @@
 import React from "react";
 import { ThemeProvider } from "./context/ThemeContext";
 import Header from "./components/Header";
-import About from "./components/About";
 import Education from "./components/Education";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import ThemeToggle from "./components/ThemeToggle";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <ThemeProvider>
-      <div className="App">
+      <Navbar />
+      <div className=" w-[60vw] m-auto">
         {/* <ThemeToggle /> */}
         <Header />
-        <About />
         <Education />
         <Skills />
         <Projects />

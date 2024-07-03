@@ -1,6 +1,6 @@
 function Education() {
   return (
-    <section className="bg-gray-100 p-4">
+    <section className="bg-gray-100 p-4" id="education">
       <div className="container mx-auto">
         <h2 className="text-2xl font-bold">Education</h2>
         <ul className="mt-2">
