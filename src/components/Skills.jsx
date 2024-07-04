@@ -1,4 +1,4 @@
-import { skillsList } from "../Skills";
+import { skillsList } from "../constants/skills";
 
 function Skills() {
   return (

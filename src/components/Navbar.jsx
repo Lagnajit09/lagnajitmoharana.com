@@ -3,10 +3,14 @@ import { PiGraduationCapFill } from "react-icons/pi";
 import { IoMdContact } from "react-icons/io";
 import { GrProjects } from "react-icons/gr";
 import { MdArticle } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   const handleScroll = (e, targetId) => {
     e.preventDefault();
+    navigate("/");
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "smooth" });
@@ -21,7 +25,7 @@ const Navbar = () => {
       <a href="#projects" onClick={(e) => handleScroll(e, "projects")}>
         <GrProjects className="w-7 h-7 text-gray-100 hover:text-white cursor-pointer" />
       </a>
-      <a href="#articles" onClick={(e) => handleScroll(e, "articles")}>
+      <a href="/blogs">
         <MdArticle className="w-8 h-8 text-gray-100 hover:text-white cursor-pointer" />
       </a>
       <a href="#contact" onClick={(e) => handleScroll(e, "contact")}>
