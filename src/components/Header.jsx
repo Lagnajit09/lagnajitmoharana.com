@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import profile from "../assets/pfp.jpg";
 import { FaXTwitter } from "react-icons/fa6";
 
@@ -62,10 +62,22 @@ function Header() {
             >
               <FaXTwitter className="w-7 h-7" />
             </a>
+            <a
+              href="https://www.instagram.com/sketchify99/"
+              target="_blank"
+              className="text-gray-400 hover:text-white"
+            >
+              <FaInstagram className="w-7 h-7" />
+            </a>
           </div>
-          <button className="mt-4 w-fit bg-blue-500 text-white py-2 px-4 rounded hover:scale-105 transition-all ease-linear">
-            Download Resume
-          </button>
+          <a
+            href="https://github.com/Lagnajit09/lagnajitmoharana.com/raw/master/Lagnajit%20Moharana%20Resume.pdf"
+            download
+          >
+            <button className="mt-4 w-fit bg-blue-500 text-white py-2 px-4 rounded hover:scale-105 transition-all ease-linear">
+              Download Resume
+            </button>
+          </a>
         </div>
       </div>
     </header>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Contact() {
+const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -9,13 +9,20 @@ function Contact() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission, e.g., send the data to a backend server
-    console.log(formData);
+    alert("Email Sent!");
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+    });
   };
 
   return (
@@ -100,6 +107,6 @@ function Contact() {
       </div>
     </section>
   );
-}
+};
 
 export default Contact;
