@@ -19,14 +19,14 @@ function Contact() {
   };
 
   return (
-    <section className="p-4" id="contact">
+    <section className="py-4" id="contact">
       <div className="container mx-auto">
-        <h2 className="text-2xl font-bold mb-4">Contact Me</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <h2 className="text-2xl font-bold mb-4 text-gray-300">Contact Me</h2>
+        <form onSubmit={handleSubmit} className="space-y-4 p-3">
           <div>
             <label
               htmlFor="name"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-gray-400"
             >
               Name
             </label>
@@ -36,14 +36,15 @@ function Contact() {
               id="name"
               value={formData.name}
               onChange={handleChange}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+              style={{ backgroundColor: "#11214a" }}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md bg-transparent text-gray-300"
               required
             />
           </div>
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-gray-400"
             >
               Email
             </label>
@@ -53,14 +54,15 @@ function Contact() {
               id="email"
               value={formData.email}
               onChange={handleChange}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+              style={{ backgroundColor: "#11214a" }}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md bg-transparent text-gray-300"
               required
             />
           </div>
           <div>
             <label
               htmlFor="message"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-gray-400"
             >
               Message
             </label>
@@ -69,7 +71,8 @@ function Contact() {
               id="message"
               value={formData.message}
               onChange={handleChange}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+              style={{ backgroundColor: "#11214a" }}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md bg-transparent text-gray-300"
               rows="4"
               required
             />
@@ -81,9 +84,18 @@ function Contact() {
             Send
           </button>
         </form>
-        <div className="mt-8">
-          <p>Email: 2004lagnajitmoharana@gmail.com</p>
-          <p>Phone: +91 7735827552</p>
+        <div className="mt-8 text-gray-300">
+          <span className="text-xl text-gray-300 font-semibold">
+            Contact Information
+          </span>
+          <div className="mt-3 text-sm flex flex-col gap-1 px-3">
+            <p>Email: 2004lagnajitmoharana@gmail.com</p>
+            <p>Phone: +91 7735827552</p>
+            <div>
+              <p>Near Nayabazar High School, Nayabazar, Cuttack - 753004</p>
+              <p>Odisha, India</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

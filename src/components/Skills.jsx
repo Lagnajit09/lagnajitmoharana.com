@@ -1,33 +1,24 @@
-import { FaReact, FaNodeJs, FaDatabase, FaCloud } from "react-icons/fa";
-import {
-  SiNextdotjs,
-  SiTailwindcss,
-  SiMongodb,
-  SiPostgresql,
-  SiFirebase,
-  SiJavascript,
-  SiTypescript,
-  SiPhp,
-} from "react-icons/si";
+import { skillsList } from "../Skills";
 
 function Skills() {
   return (
-    <section className="p-4">
+    <section className="pt-4">
       <div className="container mx-auto">
-        <h2 className="text-2xl font-bold">Technical Skills</h2>
-        <div className="flex flex-wrap mt-2 space-x-4">
-          <FaReact title="React.js" />
-          <SiNextdotjs title="Next.js" />
-          <FaNodeJs title="Node.js" />
-          <SiTailwindcss title="Tailwind CSS" />
-          <SiMongodb title="MongoDB" />
-          <SiPostgresql title="PostgreSQL" />
-          <SiFirebase title="Firebase" />
-          <SiJavascript title="JavaScript" />
-          <SiTypescript title="TypeScript" />
-          <SiPhp title="PHP" />
-          <FaDatabase title="Database Management" />
-          <FaCloud title="Cloud Computing" />
+        <h2 className="text-2xl font-bold text-gray-300">Technical Skills</h2>
+        <div className="flex flex-wrap mt-2 ">
+          {skillsList.map((item, index) => (
+            <div
+              key={index}
+              className="p-2 mb-2 flex flex-col items-center gap-2 w-[20%]"
+            >
+              <img
+                src={item.icon}
+                alt="html"
+                className=" w-16 h-16 object-contain"
+              />
+              <span className=" text-gray-400 text-sm">{item.name}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>
