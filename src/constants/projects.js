@@ -35,7 +35,7 @@ export const projects = [
     id: "5",
     year: "2024",
     title: "Resume Portfolio",
-    link: "https://pro-figma.vercel.app/",
+    link: "https://lagnajitmoharana08.web.app/",
     github: "https://github.com/Lagnajit09/lagnajitmoharana.com",
     tech: ["ReactJS", "Tailwind CSS"],
   },
