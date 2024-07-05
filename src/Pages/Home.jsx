@@ -10,12 +10,12 @@ import About from "../components/About";
 const Home = () => {
   return (
     <div>
-      <div className="relative w-[75vw] m-auto flex gap-10 justify-between">
-        <div className="fixed">
+      <div className="relative w-[95%] md:w-[75vw] m-auto md:flex gap-10 justify-between">
+        <div className="md:fixed">
           <Header />
         </div>
         <div className="w-full flex flex-col items-end float-right">
-          <div className="w-[45%] py-20 flex flex-col gap-5">
+          <div className="md:w-[45%] py-20 flex flex-col gap-5">
             <About />
             <Education />
             <Skills />

@@ -50,7 +50,7 @@ function Projects() {
               <div className="flex gap-2 flex-wrap">
                 {project.tech.map((item, index) => (
                   <p
-                    className="mt-1 text-gray-300 text-xs rounded-full px-2 py-1 border-2 border-blue-900"
+                    className="mt-1 text-cyan-300 text-xs rounded-full px-2 py-1 border-2 border-blue-900"
                     key={index}
                   >
                     {item}
@@ -60,7 +60,7 @@ function Projects() {
               <a
                 href={project.link}
                 target="_blank"
-                className="text-blue-500 mt-2 text-sm flex gap-2 items-center"
+                className="text-cyan-400 mt-2 text-sm flex gap-2 items-center"
               >
                 <span>View Project</span>
                 <RiShareBoxLine />
@@ -68,6 +68,13 @@ function Projects() {
             </div>
           ))}
         </div>
+        <a
+          href="/projects"
+          className="w-fit text-cyan-400 font-semibold hover:text-gray-200 mt-2 ml-3 text-sm flex gap-2 items-center"
+        >
+          <span>View all projects</span>
+          <RiShareBoxLine />
+        </a>
       </div>
     </section>
   );

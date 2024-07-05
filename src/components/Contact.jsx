@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FiMail, FiPhone } from "react-icons/fi";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -96,8 +97,9 @@ const Contact = () => {
             Contact Information
           </span>
           <div className="mt-3 text-sm flex flex-col gap-1 px-3">
-            <p>Email: 2004lagnajitmoharana@gmail.com</p>
-            <p>Phone: +91 7735827552</p>
+            <p className="flex items-center gap-2">
+              <FiMail /> 2004lagnajitmoharana@gmail.com
+            </p>
             <div>
               <p>Near Nayabazar High School, Nayabazar, Cuttack - 753004</p>
               <p>Odisha, India</p>
