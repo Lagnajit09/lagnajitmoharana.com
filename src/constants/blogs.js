@@ -1,8 +1,16 @@
 import FigmaBlog from "../assets/blogs/FigmaBlog.jpeg";
 import MediumBlog from "../assets/blogs/MediumBlog.jpeg";
 import StudyBuddyBlog from "../assets/blogs/StudyBuddyBlog.jpeg";
+import DockerBlog from "../assets/blogs/docker.png";
 
 export const blogs = [
+  {
+    name: "Docker: Way to Containerization",
+    link: "https://lmdev09.notion.site/Docker-101-Your-First-Steps-into-Containerization-e548710acb0347cca304765731de3ab9",
+    image: DockerBlog,
+    description:
+      "Docker is an open-source platform that allows developers to automate the deployment of applications in lightweight, portable containers. These containers package everything needed to run an application, ensuring consistent performance across different environments.",
+  },
   {
     name: "Figma: Designer's Choice",
     link: "https://lmdev09.notion.site/Project-Figma-Clone-714af7682fd248d0bb671c90f1d82c3c",
@@ -11,7 +19,7 @@ export const blogs = [
       "A Figma-like design website provides an intuitive, collaborative platform for creating and prototyping user interfaces, offering robust tools for designing, sharing, and iterating on digital designs in real-time.",
   },
   {
-    name: "Medium: Blog Platform",
+    name: "Medium: Blogging Platform",
     link: "https://lmdev09.notion.site/Project-Medium-Clone-9e9e079351c74d329b4c49e3efc20936",
     image: MediumBlog,
     description:

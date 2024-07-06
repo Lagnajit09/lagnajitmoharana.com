@@ -11,7 +11,7 @@ const BlogCard = ({ title, image, link, description }) => {
         <img
           src={image}
           alt={title}
-          className="overflow-hidden object-contain rounded-md"
+          className=" w-full h-56 overflow-hidden object-contain rounded-md"
         />
         <div className=" mt-3 flex flex-col p-1">
           <h1 className=" text-gray-300 font-semibold text-lg">{title}</h1>
