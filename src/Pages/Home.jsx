@@ -11,11 +11,11 @@ const Home = () => {
   return (
     <div>
       <div className="relative w-[95%] md:w-[75vw] m-auto md:flex gap-10 justify-between">
-        <div className="md:fixed">
+        <div className="md:fixed md:w-[40%]">
           <Header />
         </div>
         <div className="w-full flex flex-col items-end float-right">
-          <div className="md:w-[45%] py-20 flex flex-col gap-5">
+          <div className="md:w-[45%] pb-10 md:pt-20 md:pb-10 flex flex-col gap-5">
             <About />
             <Education />
             <Skills />
@@ -23,8 +23,8 @@ const Home = () => {
             <Contact />
             <p className=" text-gray-500 text-sm">
               Loosely designed in Figma and coded in Visual Studio Code by yours
-              truly. Built with React.js and Tailwind CSS, deployed with Vercel.
-              All text is set in the Inter typeface.
+              truly. Built with React.js and Tailwind CSS, deployed with
+              Firebase. All text is set in the Inter typeface.
             </p>
           </div>
         </div>
