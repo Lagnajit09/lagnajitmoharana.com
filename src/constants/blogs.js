@@ -2,8 +2,16 @@ import FigmaBlog from "../assets/blogs/FigmaBlog.jpeg";
 import MediumBlog from "../assets/blogs/MediumBlog.jpeg";
 import StudyBuddyBlog from "../assets/blogs/StudyBuddyBlog.jpeg";
 import DockerBlog from "../assets/blogs/docker.png";
+import PythonBlog from "../assets/blogs/pythonBlog.svg";
 
 export const blogs = [
+  {
+    name: "100xPython: 0 to 100",
+    link: "https://lmdev09.notion.site/100xPython-07771bf20177446ca2b775241d42d959",
+    image: PythonBlog,
+    description:
+      "Python is a versatile, powerful, and readable programming language, perfect for beginners and experienced developers. Its extensive libraries and frameworks support a wide range of applications, including web development, data analysis, artificial intelligence, scientific computing, and more.",
+  },
   {
     name: "Docker: Way to Containerization",
     link: "https://lmdev09.notion.site/Docker-101-Your-First-Steps-into-Containerization-e548710acb0347cca304765731de3ab9",
