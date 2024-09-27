@@ -4,8 +4,8 @@ import Education from "../components/Education";
 import Skills from "../components/Skills";
 import Projects from "../components/Projects";
 import Contact from "../components/Contact";
-import Navbar from "../components/Navbar";
 import About from "../components/About";
+import Experience from "../components/Experience";
 
 const Home = () => {
   return (
@@ -17,6 +17,7 @@ const Home = () => {
         <div className="w-full flex flex-col items-end float-right">
           <div className="md:w-[45%] pb-10 md:pt-20 md:pb-10 flex flex-col gap-5">
             <About />
+            <Experience />
             <Education />
             <Skills />
             <Projects />
