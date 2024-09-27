@@ -91,6 +91,27 @@ export const projects = [
 ];
 ```
 
+### 4. `experiences.js`
+
+Update the experience details with your own experience:
+
+```js
+// src/constants/projects.js
+
+export const experiences = [
+  {
+    id: "An unique id",
+    designation: "Your designation of experience",
+    company: "Name of your company",
+    startDate: "Date of joining",
+    endDate: "Date of leaving",
+    logo: "Logo of the company",
+    description: "A brief description about your work."
+  },
+  // Add more projects here
+];
+```
+
 ## Contributing
 
 If you have suggestions for improvements or find any issues, feel free to open a pull request or issue.

@@ -2,6 +2,7 @@ import AccentureLogo from "../assets/experiences/accenture_logo.svg";
 
 export const experiences = [
 {
+    id: "0",
     designation: "Packaged App Development Associate",
     company: "Accenture",
     startDate: "August 2024",
