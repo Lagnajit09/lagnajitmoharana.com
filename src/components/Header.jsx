@@ -37,8 +37,11 @@ function Header() {
             </h1>
           </div>
           <div className="flex flex-col gap-1 text-gray-300">
-            <p>Fresher | Aspiring Full-Stack Developer</p>
-            <p>Graduation in Information Technology and Management</p>
+            <p>ASE at Accenture | Full-Stack Developer</p>
+            <p>
+              Expertise in AWS Cloud and DevOps | Graduate in IT & Management
+              2024
+            </p>
           </div>
           <div className="flex space-x-6 mt-2">
             <a

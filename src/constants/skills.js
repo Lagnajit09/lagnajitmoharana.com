@@ -15,31 +15,18 @@ import PHP from "../assets/skills/php.svg";
 import ReactJS from "../assets/skills/reactjs.svg";
 import TailwindCSS from "../assets/skills/tailwindcss.svg";
 import TypeScript from "../assets/skills/typescript.svg";
+import AWS from "../assets/skills/awsLogo.svg";
+import Azure from "../assets/skills/azureLogo.svg";
+import Python from "../assets/skills/pyLogo.svg";
 
 export const skillsList = [
   {
-    icon: HTML5,
-    name: "HTML5",
+    icon: AWS,
+    name: "AWS",
   },
   {
-    icon: CSS3,
-    name: "CSS3",
-  },
-  {
-    icon: TailwindCSS,
-    name: "TailwindCSS",
-  },
-  {
-    icon: JavaScript,
-    name: "JavaScript",
-  },
-  {
-    icon: TypeScript,
-    name: "TypeScript",
-  },
-  {
-    icon: PHP,
-    name: "PHP",
+    icon: Azure,
+    name: "Azure",
   },
   {
     icon: ReactJS,
@@ -48,6 +35,30 @@ export const skillsList = [
   {
     icon: NextJS,
     name: "NextJS",
+  },
+  {
+    icon: CloudFlare,
+    name: "CloudFlare",
+  },
+  {
+    icon: Firebase,
+    name: "Firebase",
+  },
+  {
+    icon: TailwindCSS,
+    name: "TailwindCSS",
+  },
+  {
+    icon: Prisma,
+    name: "Prisma",
+  },
+  {
+    icon: JavaScript,
+    name: "JavaScript",
+  },
+  {
+    icon: TypeScript,
+    name: "TypeScript",
   },
   {
     icon: NodeJS,
@@ -66,20 +77,12 @@ export const skillsList = [
     name: "PostgreSQL",
   },
   {
-    icon: Prisma,
-    name: "Prisma",
-  },
-  {
-    icon: CloudFlare,
-    name: "CloudFlare",
-  },
-  {
-    icon: Firebase,
-    name: "Firebase",
-  },
-  {
     icon: ReactJS,
     name: "ReactNative",
+  },
+  {
+    icon: Python,
+    name: "Python",
   },
   {
     icon: Java,

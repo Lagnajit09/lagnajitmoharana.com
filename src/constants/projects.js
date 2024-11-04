@@ -1,5 +1,13 @@
 export const projects = [
   {
+    id: "7",
+    year: "2024",
+    title: "SwiftPay",
+    link: "",
+    github: "https://github.com/Lagnajit09/walletX",
+    tech: ["NextJS", "ExpressJS", "PostgreSQL", "Tailwind CSS", "Prisma"],
+  },
+  {
     id: "1",
     year: "2024",
     title: "StudyBuddy: Virtual study platform",
