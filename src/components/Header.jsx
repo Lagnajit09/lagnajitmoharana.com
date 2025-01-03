@@ -74,7 +74,7 @@ function Header() {
             </a>
           </div>
           <a
-            href="https://github.com/Lagnajit09/lagnajitmoharana.com/raw/master/Lagnajit%20Moharana%20Resume.pdf"
+            href="https://github.com/Lagnajit09/lagnajitmoharana.com/raw/master/LagnajitMoharana.pdf"
             download
           >
             <button className="mt-4 w-fit bg-blue-500 text-white py-2 px-4 rounded hover:scale-105 transition-all ease-linear">

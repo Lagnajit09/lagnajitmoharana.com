@@ -3,7 +3,7 @@ export const projects = [
     id: "7",
     year: "2024",
     title: "SwiftPay",
-    link: "",
+    link: "https://swiftpay-red.vercel.app/",
     github: "https://github.com/Lagnajit09/walletX",
     tech: ["NextJS", "ExpressJS", "PostgreSQL", "Tailwind CSS", "Prisma"],
   },
