@@ -3,6 +3,13 @@ import { RiShareBoxLine } from "react-icons/ri";
 function Projects() {
   const projects = [
     {
+      title: "Swiftpay: Payment Application",
+      link: "https://swiftpay-red.vercel.app/",
+      tech: ["NextJS", "ExpressJS", "PostgreSQL", "Tailwind CSS", "Prisma"],
+      description:
+        "SwiftPay is a payment application that allows users to send and receive money instantly, connect with friends, and manage their finances with ease. It is built with a modern tech stack and offers a seamless user experience.",
+    },
+    {
       title: "StudyBuddy: Virtual study platform",
       link: "https://studybuddy-52816.web.app/",
       tech: ["React.js", "Node.js", "Express.js", "MongoDB", "Firebase"],
@@ -22,13 +29,6 @@ function Projects() {
       ],
       description:
         "Medium is an advanced and feature-rich blogging platform designed to enhance your writing and reading experience.",
-    },
-    {
-      title: "Social Media Platform",
-      link: "https://ls-book.web.app/",
-      tech: ["React.js", "Firebase"],
-      description:
-        "A frontend template for a social media application similar to Instagram. Users can post and comment on content, and view their profiles. This template provides the basic structure and functionality for a social media experience focused on user interactions and content sharing.",
     },
   ];
 

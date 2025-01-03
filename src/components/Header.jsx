@@ -52,7 +52,7 @@ function Header() {
               <FaGithub className="w-7 h-7" />
             </a>
             <a
-              href="https://www.linkedin.com/in/lagnajit-moharana-509591232/"
+              href="https://www.linkedin.com/in/lagnajitmoharana2004/"
               target="_blank"
               className="text-gray-400 hover:text-white"
             >

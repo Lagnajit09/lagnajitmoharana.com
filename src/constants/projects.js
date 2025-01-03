@@ -47,12 +47,4 @@ export const projects = [
     github: "https://github.com/Lagnajit09/lagnajitmoharana.com",
     tech: ["ReactJS", "Tailwind CSS"],
   },
-  {
-    id: "6",
-    year: "2023",
-    title: "Social Media Template",
-    link: "https://ls-book.web.app/",
-    github: "https://github.com/Lagnajit09/social-media",
-    tech: ["ReactJS", "Firebase"],
-  },
 ];
