@@ -4,7 +4,7 @@ function Projects() {
   const projects = [
     {
       title: "Swiftpay: Payment Application",
-      link: "https://swiftpay-red.vercel.app/",
+      link: "https://swiftpaylm.vercel.app/",
       tech: ["NextJS", "ExpressJS", "PostgreSQL", "Tailwind CSS", "Prisma"],
       description:
         "SwiftPay is a payment application that allows users to send and receive money instantly, connect with friends, and manage their finances with ease. It is built with a modern tech stack and offers a seamless user experience.",
