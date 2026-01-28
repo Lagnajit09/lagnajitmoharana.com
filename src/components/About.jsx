@@ -2,20 +2,22 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className=" text-gray-400 text-base flex flex-col gap-4 hover:text-gray-300">
+    <div className="text-gray-300/85 text-base flex flex-col gap-4">
       <p>
         Back in my college days, I discovered my passion for coding and web
         development, diving headfirst into the world of full-stack development.
         Fast-forward to today, I've had the pleasure of working on various
-        projects that showcase my skills in building responsive and interactive
-        user interfaces.
+        projects that showcase my skills in building end-to-end applications.
       </p>
       <p>
-        Currently, I focus on front-end development, creating visually appealing
-        and user-friendly applications using technologies like React, Next.js,
-        and Tailwind CSS. My technical toolkit also includes backend
-        technologies such as Node.js and Firebase, enabling me to craft
-        comprehensive full-stack solutions.
+        I started my journey with front-end development, building clean,
+        responsive, and user-friendly interfaces.
+        <br />
+        Over time, my focus has grown into Cloud Infrastructure, DevOps
+        practices, and AI-driven systems. I now work on designing and deploying
+        scalable applications using cloud platforms, containerization, CI/CD
+        pipelines, and infrastructure automation, while continuing to learn
+        about AI-powered application workflows.
       </p>
       <p>
         In addition to my technical endeavors, I enjoy exploring the realms of

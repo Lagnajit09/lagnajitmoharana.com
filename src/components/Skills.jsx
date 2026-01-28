@@ -16,7 +16,7 @@ function Skills() {
                 alt="html"
                 className=" w-16 h-16 object-contain"
               />
-              <span className=" text-gray-400 text-sm">{item.name}</span>
+              <span className="text-gray-400 text-sm">{item.name}</span>
             </div>
           ))}
         </div>

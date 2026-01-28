@@ -1,6 +1,4 @@
-import React from "react";
 import { certificates } from "../constants/certificates";
-import { Link } from "react-router-dom";
 
 const Certifications = () => {
   return (
@@ -9,7 +7,7 @@ const Certifications = () => {
         <h2 className="text-gray-300 text-2xl font-bold">Certifications</h2>
         {certificates.map((cert, index) => (
           <div
-            className={`flex mt-2 gap-3 items-center text-gray-400 p-3 rounded hover:text-gray-300`}
+            className="flex mt-2 gap-3 items-center text-gray-300/85 p-3 rounded"
             key={index}
           >
             <div className="bg-gray-800 h-fit rounded-full p-2">

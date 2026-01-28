@@ -48,3 +48,34 @@ export const projects = [
     tech: ["ReactJS", "Tailwind CSS"],
   },
 ];
+
+export const topProjects = [
+  {
+    title: "Swiftpay: Payment Application",
+    link: "https://swiftpaylm.vercel.app/",
+    tech: ["NextJS", "ExpressJS", "PostgreSQL", "Tailwind CSS", "Prisma"],
+    description:
+      "SwiftPay is a payment application that allows users to send and receive money instantly, connect with friends, and manage their finances with ease. It is built with a modern tech stack and offers a seamless user experience.",
+  },
+  {
+    title: "StudyBuddy: Virtual study platform",
+    link: "https://studybuddy-52816.web.app/",
+    tech: ["React.js", "Node.js", "Express.js", "MongoDB", "Firebase"],
+    description:
+      "Virtual Study Buddy is an innovative online platform aimed at fostering a collaborative studying environment. It integrates AI-powered study resources from renowned educational platforms, real-time note-taking capabilities, and various chat options, ensuring students have everything they need to succeed.",
+  },
+  {
+    title: "Medium: Blog Website",
+    link: "https://medium-pro.web.app/",
+    tech: [
+      "React.js",
+      "Hono",
+      "PostgreSQL",
+      "Firebase",
+      "Tailwind CSS",
+      "Prisma ORM",
+    ],
+    description:
+      "Medium is an advanced and feature-rich blogging platform designed to enhance your writing and reading experience.",
+  },
+];

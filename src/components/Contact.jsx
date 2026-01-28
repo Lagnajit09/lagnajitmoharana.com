@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BiLocationPlus } from "react-icons/bi";
 import { FiMail, FiPhone } from "react-icons/fi";
 
 const Contact = () => {
@@ -44,8 +45,7 @@ const Contact = () => {
               id="name"
               value={formData.name}
               onChange={handleChange}
-              style={{ backgroundColor: "#11214a" }}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md bg-transparent text-gray-300"
+              className="mt-1 block w-full p-2 border-2 border-gray-700 rounded-lg bg-transparent text-gray-300"
               required
             />
           </div>
@@ -62,8 +62,7 @@ const Contact = () => {
               id="email"
               value={formData.email}
               onChange={handleChange}
-              style={{ backgroundColor: "#11214a" }}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md bg-transparent text-gray-300"
+              className="mt-1 block w-full p-2 border-2 border-gray-700 rounded-lg bg-transparent text-gray-300"
               required
             />
           </div>
@@ -79,8 +78,7 @@ const Contact = () => {
               id="message"
               value={formData.message}
               onChange={handleChange}
-              style={{ backgroundColor: "#11214a" }}
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md bg-transparent text-gray-300"
+              className="mt-1 block w-full p-2 border-2 border-gray-700 rounded-lg bg-transparent text-gray-300"
               rows="4"
               required
             />
@@ -101,8 +99,9 @@ const Contact = () => {
               <FiMail /> 2004lagnajitmoharana@gmail.com
             </p>
             <div>
-              <p>Near Nayabazar High School, Nayabazar, Cuttack - 753004</p>
-              <p>Odisha, India</p>
+              <p className="flex items-center gap-2">
+                <BiLocationPlus /> Odisha, India - 753004
+              </p>
             </div>
           </div>
         </div>

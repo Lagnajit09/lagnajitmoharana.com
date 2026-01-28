@@ -39,7 +39,7 @@ function Header() {
           <div className="flex flex-col gap-1 text-gray-300">
             <p>ASE at Accenture | Full-Stack Developer</p>
             <p>
-              Expertise in AWS Cloud and DevOps | Graduate in IT & Management
+              Expertise in Cloud Platforms and DevOps | Graduate IT & Management
               2024
             </p>
           </div>
