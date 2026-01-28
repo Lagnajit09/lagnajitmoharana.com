@@ -11,6 +11,7 @@ import TailwindCSS from "../assets/skills/tailwindcss.svg";
 import TypeScript from "../assets/skills/typescript.svg";
 import AWS from "../assets/skills/awsLogo.svg";
 import Azure from "../assets/skills/azureLogo.svg";
+import GCP from "../assets/skills/gcpLogo.svg";
 import Python from "../assets/skills/pyLogo.svg";
 import Ansible from "../assets/skills/ansible.svg";
 import Terraform from "../assets/skills/terraform.svg";
@@ -25,6 +26,10 @@ export const skillsList = [
   {
     icon: Azure,
     name: "Azure",
+  },
+  {
+    icon: GCP,
+    name: "GCP",
   },
   {
     icon: Firebase,
