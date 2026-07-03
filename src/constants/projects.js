@@ -1,19 +1,63 @@
 export const projects = [
   {
+    id: "11",
+    year: "2026",
+    title: "MiniGPT-Shakespeare: Trained GPT Model for Text Generation",
+    link: "https://huggingface.co/spaces/m-lagnajit/minigpt-shakespeare",
+    github:
+      "https://github.com/Lagnajit09/100x_AI_ML/tree/main/minigpt-model-hf",
+    tech: ["PyTorch", "Gradio", "HuggingFace", "Transformers & Attention"],
+  },
+  {
+    id: "10",
+    year: "2025 - 2026",
+    title: "AutoSage: Infrastructure Automation Platform",
+    link: "https://autosagex.web.app/",
+    github: "https://github.com/Lagnajit09/autosage",
+    tech: [
+      "ReactJS",
+      "Django",
+      "Redis",
+      "Celery",
+      "GCP",
+      "Tailwind CSS",
+      "RAG",
+      "Agentic AI",
+      "Supabase",
+      "Docker",
+    ],
+  },
+  {
+    id: "9",
+    year: "2025 - 2026",
+    title: "AutoSage Docs",
+    link: "https://autosagexdocs.web.app/",
+    github: "https://github.com/Lagnajit09/autosage-docs",
+    tech: ["Docusaurus", "Django", "RAG", "Supabase - VectorDB"],
+  },
+  {
+    id: "8",
+    year: "2025",
+    title: "SwiftPay - InfraOps",
+    link: "",
+    github: "https://github.com/Lagnajit09/swiftpay-infraops",
+    tech: [
+      "NextJS",
+      "ExpressJS",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "Prisma",
+      "Microservices",
+      "Docker",
+    ],
+  },
+  {
     id: "7",
     year: "2024",
     title: "SwiftPay",
     link: "https://swiftpaylm.vercel.app/",
     github: "https://github.com/Lagnajit09/walletX",
     tech: ["NextJS", "ExpressJS", "PostgreSQL", "Tailwind CSS", "Prisma"],
-  },
-  {
-    id: "1",
-    year: "2024",
-    title: "StudyBuddy: Virtual study platform",
-    link: "https://studybuddy-52816.web.app/",
-    github: "https://github.com/Lagnajit09/StudyBuddy",
-    tech: ["ReactJS", "ExpressJS", "MongoDB", "Firebase", "Socket.io"],
   },
   {
     id: "2",
@@ -51,31 +95,35 @@ export const projects = [
 
 export const topProjects = [
   {
+    title: "AutoSage: Infrastructure Automation Platform",
+    link: "https://autosagex.web.app/",
+    tech: [
+      "ReactJS",
+      "Django",
+      "Redis",
+      "Celery",
+      "GCP",
+      "Tailwind CSS",
+      "RAG",
+      "Agentic AI",
+      "Supabase",
+      "Docker",
+    ],
+    description:
+      "AutoSage is an AI-driven infrastructure automation platform that streamlines and optimizes cloud operations through workflows, RAG and agentic AI, enabling users to manage and scale their infrastructure efficiently.",
+  },
+  {
+    title: "MiniGPT-Shakespeare: Trained GPT Model for Text Generation",
+    link: "https://huggingface.co/spaces/m-lagnajit/minigpt-shakespeare",
+    tech: ["PyTorch", "Gradio", "HuggingFace", "Transformers & Attention"],
+    description:
+      "MiniGPT-Shakespeare is a specialized GPT model trained to generate text in the style of William Shakespeare. Built a transformer-based architecture using PyTorch and fine-tuned it on a curated dataset of Shakespearean works, enabling it to produce authentic and stylistically accurate text.",
+  },
+  {
     title: "Swiftpay: Payment Application",
     link: "https://swiftpaylm.vercel.app/",
     tech: ["NextJS", "ExpressJS", "PostgreSQL", "Tailwind CSS", "Prisma"],
     description:
-      "SwiftPay is a payment application that allows users to send and receive money instantly, connect with friends, and manage their finances with ease. It is built with a modern tech stack and offers a seamless user experience.",
-  },
-  {
-    title: "StudyBuddy: Virtual study platform",
-    link: "https://studybuddy-52816.web.app/",
-    tech: ["React.js", "Node.js", "Express.js", "MongoDB", "Firebase"],
-    description:
-      "Virtual Study Buddy is an innovative online platform aimed at fostering a collaborative studying environment. It integrates AI-powered study resources from renowned educational platforms, real-time note-taking capabilities, and various chat options, ensuring students have everything they need to succeed.",
-  },
-  {
-    title: "Medium: Blog Website",
-    link: "https://medium-pro.web.app/",
-    tech: [
-      "React.js",
-      "Hono",
-      "PostgreSQL",
-      "Firebase",
-      "Tailwind CSS",
-      "Prisma ORM",
-    ],
-    description:
-      "Medium is an advanced and feature-rich blogging platform designed to enhance your writing and reading experience.",
+      "SwiftPay is a demo payment application that allows users to send and receive money instantly, connect with friends, and manage their finances with ease. It is built with a modern tech stack and offers a seamless user experience.",
   },
 ];

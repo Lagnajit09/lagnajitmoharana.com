@@ -1,13 +1,24 @@
 import AccentureLogo from "../assets/experiences/accenture_logo.svg";
 
 export const experiences = [
-{
-    id: "0",
-    designation: "Packaged App Development Associate",
-    company: "Accenture",
-    startDate: "August 2024",
+  {
+    id: "1",
+    designation: "Packaged App Development Analyst",
+    company: "Accenture, India",
+    startDate: "June 2026",
     endDate: "Present",
     logo: AccentureLogo,
-    description: "Worked on various projects using React, Angular, and Vue.js frameworks, and assisted in implementing various features and bug fixes."
-}
-]
+    description:
+      "Building and deploying resilient infrastructure automation platforms and ServiceNow workflows across client environments to optimize operations and maintain high availability.",
+  },
+  {
+    id: "0",
+    designation: "Packaged App Development Associate",
+    company: "Accenture, India",
+    startDate: "August 2024",
+    endDate: "May 2026",
+    logo: AccentureLogo,
+    description:
+      "Developed and maintained full-stack internal applications and optimized cloud operations utilizing Python, Django and Azure OpenAI.",
+  },
+];

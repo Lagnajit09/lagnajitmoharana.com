@@ -7,7 +7,20 @@ function Projects() {
   const navigate = useNavigate();
 
   return (
-    <Section id="projects" label="Selected Work" title="Projects">
+    <Section id="projects" label="Selected Work">
+      <div className="flex items-baseline justify-between gap-4 mb-6">
+        <h2 className="font-display text-3xl md:text-4xl text-fg tracking-tight">Projects</h2>
+        <button
+          onClick={() => navigate("/projects")}
+          className="group shrink-0 inline-flex items-center gap-1 text-sm font-medium text-muted hover:text-accent transition-colors"
+        >
+          View all
+          <FiArrowUpRight
+            size={15}
+            className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"
+          />
+        </button>
+      </div>
       <div className="flex flex-col gap-4">
         {topProjects.map((project, index) => (
           <a
@@ -43,16 +56,6 @@ function Projects() {
         ))}
       </div>
 
-      <button
-        onClick={() => navigate("/projects")}
-        className="group mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-fg hover:text-accent transition-colors"
-      >
-        View all projects
-        <FiArrowUpRight
-          size={16}
-          className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"
-        />
-      </button>
     </Section>
   );
 }

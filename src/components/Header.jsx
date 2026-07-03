@@ -38,10 +38,11 @@ function Header() {
             Moharana
           </h1>
           <p className="mt-6 text-lg text-muted max-w-md leading-relaxed">
-            Full-stack developer building scalable applications, with a focus on{" "}
-            <span className="text-fg">cloud infrastructure</span> and{" "}
-            <span className="text-fg">DevOps</span>. Currently an App Development
-            Associate at Accenture.
+            Full-stack developer exploring the frontier of{" "}
+            <span className="text-fg">AI & Machine Learning</span>, with a
+            foundation in <span className="text-fg">Cloud Infrastructure</span>{" "}
+            and <span className="text-fg">DevOps</span>. <br /> App Development
+            Analyst at Accenture.
           </p>
         </div>
 
@@ -51,7 +52,7 @@ function Header() {
             <img
               src={profile}
               alt="Lagnajit Moharana"
-              className="relative w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-full ring-1 ring-border"
+              className="relative w-44 h-44 sm:w-56 sm:h-56 object-cover rounded-full ring-1 ring-border"
             />
           </div>
         </div>
