@@ -1,105 +1,85 @@
-import React from "react";
-import { projects } from "../constants/projects";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import { FaGithub } from "react-icons/fa";
-import { RiShareBoxLine } from "react-icons/ri";
+import { FiArrowUpRight, FiArrowLeft } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
+import { projects } from "../constants/projects";
+import { useReveal } from "../hooks/useReveal";
 
 const Projects = () => {
+  const navigate = useNavigate();
+  const containerRef = useReveal();
+
   return (
-    <div className="w-[95%] md:w-[75vw] mx-auto mt-20">
-      <h1 className=" text-gray-50 font-bold text-4xl">All Projects</h1>
-      <TableContainer
-        component={Paper}
-        style={{
-          backgroundColor: "transparent",
-          border: "none",
-          marginTop: "20px",
-        }}
+    <div
+      ref={containerRef}
+      className="max-w-4xl mx-auto px-5 sm:px-8 pt-28 md:pt-36 pb-16 min-h-screen"
+    >
+      <button
+        onClick={() => navigate("/")}
+        className="group inline-flex items-center gap-1.5 text-sm text-muted hover:text-fg transition-colors mb-8"
       >
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow
-              sx={{
-                "& th": { color: "white", fontWeight: "600", fontSize: "18px" },
-              }}
-            >
-              <TableCell>Year</TableCell>
-              <TableCell>Title</TableCell>
-              <TableCell>Built with</TableCell>
-              <TableCell>Website</TableCell>
-              <TableCell>GitHub</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {projects.map((row) => (
-              <TableRow
-                key={row.id}
-                sx={{
-                  "& td": {
-                    color: "lightgray",
-                    borderColor: "#0c225c",
-                    paddingY: "30px",
-                  },
-                }}
+        <FiArrowLeft
+          size={16}
+          className="group-hover:-translate-x-0.5 transition-transform"
+        />
+        Back home
+      </button>
+
+      <h1 className="font-display text-4xl md:text-5xl tracking-tight text-fg">
+        All projects
+      </h1>
+      <p className="text-muted mt-3 max-w-lg">
+        A collection of things I've designed and built — from full-stack web
+        apps to mobile.
+      </p>
+
+      <div className="mt-10 flex flex-col">
+        {projects.map((row) => (
+          <div
+            key={row.id}
+            className="reveal group grid grid-cols-[auto_1fr] sm:grid-cols-[5rem_1fr_auto] gap-x-4 gap-y-3 items-start py-6 border-t border-border first:border-t-0 sm:items-center"
+          >
+            <span className="text-sm text-subtle tabular-nums pt-0.5 sm:pt-0">
+              {row.year}
+            </span>
+
+            <div className="min-w-0">
+              <h3 className="font-semibold text-fg text-lg">{row.title}</h3>
+              <div className="flex flex-wrap gap-1.5 mt-2">
+                {row.tech.map((item, index) => (
+                  <span
+                    key={index}
+                    className="text-xs text-muted rounded-full px-2 py-0.5 border border-border"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="col-span-2 sm:col-span-1 flex items-center gap-2 sm:justify-end">
+              {row.link && (
+                <a
+                  href={row.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 rounded-full border border-border px-3 py-1.5 text-xs text-fg hover:border-accent hover:text-accent transition-colors"
+                >
+                  Visit <FiArrowUpRight size={13} />
+                </a>
+              )}
+              <a
+                href={row.github}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub repository"
+                className="inline-flex items-center gap-1 rounded-full border border-border px-3 py-1.5 text-xs text-fg hover:border-accent hover:text-accent transition-colors"
               >
-                <TableCell>{row.year}</TableCell>
-                <TableCell style={{ fontSize: "16px", fontWeight: "600" }}>
-                  {row.title}
-                </TableCell>
-                <TableCell>
-                  <div className="flex flex-wrap gap-4">
-                    {row.tech.map((item, index) => (
-                      <span
-                        key={index}
-                        style={{ backgroundColor: "#143051", color: "cyan" }}
-                        className=" px-4 py-1 rounded-full"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </TableCell>
-                <TableCell>
-                  <a
-                    href={row.link}
-                    target="_blank"
-                    style={{
-                      display: "flex",
-                      gap: "10px",
-                      alignItems: "center",
-                    }}
-                    className="hover:text-cyan-400"
-                  >
-                    {row.link ? "Visit" : ""}
-                    {row.link ? <RiShareBoxLine /> : ""}
-                  </a>
-                </TableCell>
-                <TableCell>
-                  <a
-                    href={row.github}
-                    target="_blank"
-                    style={{
-                      display: "flex",
-                      gap: "6px",
-                      alignItems: "center",
-                    }}
-                    className="hover:text-cyan-400"
-                  >
-                    <FaGithub style={{ width: "20px", height: "20px" }} />
-                    GitHub
-                  </a>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+                <FaGithub size={13} /> Code
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

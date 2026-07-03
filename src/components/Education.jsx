@@ -1,43 +1,40 @@
+import Section from "./Section";
+
+const education = [
+  {
+    period: "2021 — 2024",
+    school: "Ravenshaw University",
+    detail:
+      "B.Sc. in Information Technology & Management (87.13%). Built several full-stack projects spanning React.js front-ends, Node.js / MongoDB back-ends, and cloud services like Firebase — laying a solid foundation for my career.",
+  },
+  {
+    period: "2019 — 2021",
+    school: "Ravenshaw Higher Secondary School",
+    detail: "12th, CHSE Board (94%).",
+  },
+  {
+    period: "2008 — 2019",
+    school: "Saraswati Vidya Mandir",
+    detail: "10th, BSE Board (91.67%).",
+  },
+];
+
 function Education() {
   return (
-    <section id="education" className=" pt-5">
-      <div className="container mx-auto">
-        <h2 className="text-gray-300 text-2xl font-bold">Education</h2>
-        <div className="mt-2 text-gray-300/85 flex flex-col gap-5">
-          <div className="flex flex-col gap-2 p-3 rounded">
-            <div>
-              <p>2021 - 2024</p>
-              <p>Ravenshaw University</p>
-            </div>
-            <p className="text-sm">
-              B.Sc. in Information Technology and Management (87.13%): During my
-              studies, I developed several full-stack projects that strengthened
-              my theoretical knowledge and practical skills across various
-              technologies and frameworks. These projects involved front-end
-              development with React.js, back-end development using Node.js and
-              MongoDB, and integrating cloud services like Firebase. They
-              showcased my ability to create, develop, and deploy robust
-              applications, laying a solid foundation for my career in
-              technology.
+    <Section id="education" label="Education" title="Where I studied">
+      <ol className="relative border-l border-border ml-1.5">
+        {education.map((item, i) => (
+          <li key={i} className="ml-6 pb-8 last:pb-0">
+            <span className="absolute -left-[6px] w-3 h-3 rounded-full bg-bg border-2 border-accent" />
+            <span className="text-sm text-subtle">{item.period}</span>
+            <h3 className="font-semibold text-fg mt-0.5">{item.school}</h3>
+            <p className="text-sm text-muted mt-1.5 leading-relaxed max-w-2xl">
+              {item.detail}
             </p>
-          </div>
-          <div className="flex flex-col gap-2 p-3 rounded">
-            <div>
-              <p>2019 - 2021</p>
-              <p>Ravenshaw Higher Secondary School</p>
-            </div>
-            <p className="text-sm">12th CHSE Board (94%)</p>
-          </div>
-          <div className="flex flex-col gap-2 p-3 rounded">
-            <div>
-              <p>2008 - 2019</p>
-              <p>Saraswati Vidya Mandir</p>
-            </div>
-            <p className="text-sm">10th BSE Board (91.67%)</p>
-          </div>
-        </div>
-      </div>
-    </section>
+          </li>
+        ))}
+      </ol>
+    </Section>
   );
 }
 

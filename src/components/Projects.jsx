@@ -1,51 +1,59 @@
-import { RiShareBoxLine } from "react-icons/ri";
+import { FiArrowUpRight } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
+import Section from "./Section";
 import { topProjects } from "../constants/projects";
 
 function Projects() {
+  const navigate = useNavigate();
+
   return (
-    <section className="py-4" id="projects">
-      <div className="container mx-auto">
-        <h2 className="text-2xl font-bold text-gray-300">Projects</h2>
-        <div className="w-full flex gap-4 mt-2 p-3 flex-wrap">
-          {topProjects.map((project, index) => (
-            <div
-              key={index}
-              className="bg-gray-900/80 border border-gray-700 p-4 rounded-xl shadow-sm flex flex-col justify-around gap-2"
-            >
-              <h3 className="text-xl font-bold text-gray-300">
+    <Section id="projects" label="Selected Work" title="Projects">
+      <div className="flex flex-col gap-4">
+        {topProjects.map((project, index) => (
+          <a
+            key={index}
+            href={project.link}
+            target="_blank"
+            rel="noreferrer"
+            className="group rounded-2xl border border-border p-6 hover:border-accent/50 hover:bg-surface transition-colors"
+          >
+            <div className="flex items-start justify-between gap-4">
+              <h3 className="text-xl font-semibold text-fg group-hover:text-accent transition-colors">
                 {project.title}
               </h3>
-              <p className=" text-sm text-gray-400">{project.description}</p>
-              <div className="flex gap-2 flex-wrap">
-                {project.tech.map((item, index) => (
-                  <p
-                    className="mt-1 text-cyan-300 text-xs rounded-full px-2 py-1 border-2 border-blue-900"
-                    key={index}
-                  >
-                    {item}
-                  </p>
-                ))}
-              </div>
-              <a
-                href={project.link}
-                target="_blank"
-                className="w-fit text-cyan-400 mt-2 text-sm flex gap-2 items-center"
-              >
-                <span>View Project</span>
-                <RiShareBoxLine />
-              </a>
+              <FiArrowUpRight
+                size={20}
+                className="shrink-0 text-subtle group-hover:text-accent group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all"
+              />
             </div>
-          ))}
-        </div>
-        <a
-          href="/projects"
-          className="w-fit text-cyan-400 font-semibold hover:text-gray-200 mt-2 ml-3 text-sm flex gap-2 items-center"
-        >
-          <span>View all projects</span>
-          <RiShareBoxLine />
-        </a>
+            <p className="text-sm text-muted mt-2 leading-relaxed">
+              {project.description}
+            </p>
+            <div className="flex flex-wrap gap-2 mt-4">
+              {project.tech.map((item, i) => (
+                <span
+                  key={i}
+                  className="text-xs text-muted rounded-full px-2.5 py-1 border border-border"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </a>
+        ))}
       </div>
-    </section>
+
+      <button
+        onClick={() => navigate("/projects")}
+        className="group mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-fg hover:text-accent transition-colors"
+      >
+        View all projects
+        <FiArrowUpRight
+          size={16}
+          className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"
+        />
+      </button>
+    </Section>
   );
 }
 

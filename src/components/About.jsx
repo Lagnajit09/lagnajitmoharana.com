@@ -1,31 +1,30 @@
-import React from "react";
+import Section from "./Section";
 
 const About = () => {
   return (
-    <div className="text-gray-300/85 text-base flex flex-col gap-4">
-      <p>
-        Back in my college days, I discovered my passion for coding and web
-        development, diving headfirst into the world of full-stack development.
-        Fast-forward to today, I've had the pleasure of working on various
-        projects that showcase my skills in building end-to-end applications.
-      </p>
-      <p>
-        I started my journey with front-end development, building clean,
-        responsive, and user-friendly interfaces.
-        <br />
-        Over time, my focus has grown into Cloud Infrastructure, DevOps
-        practices, and AI-driven systems. I now work on designing and deploying
-        scalable applications using cloud platforms, containerization, CI/CD
-        pipelines, and infrastructure automation, while continuing to learn
-        about AI-powered application workflows.
-      </p>
-      <p>
-        In addition to my technical endeavors, I enjoy exploring the realms of
-        2D animation, portrait drawing, and design. When I'm not coding, you'll
-        find me bringing characters to life through animation, sketching
-        intricate portraits, or brainstorming creative design ideas.
-      </p>
-    </div>
+    <Section id="about" label="About" title="Who I am">
+      <div className="text-muted text-base md:text-lg leading-relaxed flex flex-col gap-5 max-w-2xl">
+        <p>
+          I found my passion for coding back in college, diving headfirst into
+          full-stack development. Since then I've built a range of end-to-end
+          applications — from real-time collaboration tools to payment systems.
+        </p>
+        <p>
+          I started with front-end, crafting clean and responsive interfaces.
+          Over time my focus grew into{" "}
+          <span className="text-fg">cloud infrastructure</span>,{" "}
+          <span className="text-fg">DevOps</span>, and{" "}
+          <span className="text-fg">AI-driven systems</span> — designing and
+          deploying scalable applications with containerization, CI/CD
+          pipelines, and infrastructure automation.
+        </p>
+        <p>
+          Away from the keyboard, you'll find me in the world of 2D animation,
+          portrait drawing, and design — bringing characters to life and
+          sketching intricate portraits.
+        </p>
+      </div>
+    </Section>
   );
 };
 

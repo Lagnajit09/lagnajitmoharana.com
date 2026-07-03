@@ -3,7 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lagnajit Moharana</title>
+    <meta
+      name="description"
+      content="Lagnajit Moharana — full-stack developer specializing in cloud infrastructure and DevOps. App Development Associate at Accenture."
+    />
+    <meta name="theme-color" content="#0a0a0b" />
+    <title>Lagnajit Moharana — Full-Stack Developer</title>
+    <script>
+      // Apply the saved/system theme before paint to avoid a flash.
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var prefersLight = window.matchMedia(
+            "(prefers-color-scheme: light)"
+          ).matches;
+          var theme = stored || (prefersLight ? "light" : "dark");
+          if (theme === "dark") document.documentElement.classList.add("dark");
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

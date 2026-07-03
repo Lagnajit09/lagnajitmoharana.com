@@ -1,86 +1,96 @@
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
-import profile from "../assets/pfp.jpg";
 import { FaXTwitter } from "react-icons/fa6";
+import { FiArrowUpRight, FiDownload } from "react-icons/fi";
+import profile from "../assets/pfp.jpg";
+
+const socials = [
+  { icon: FaGithub, href: "https://github.com/Lagnajit09", label: "GitHub" },
+  {
+    icon: FaLinkedin,
+    href: "https://www.linkedin.com/in/lagnajitmoharana2004/",
+    label: "LinkedIn",
+  },
+  { icon: FaXTwitter, href: "https://x.com/m_lagnajit09", label: "X" },
+  {
+    icon: FaInstagram,
+    href: "https://www.instagram.com/sketchify99/",
+    label: "Instagram",
+  },
+];
 
 function Header() {
-  const style = {
-    spanStyle: {
-      fontFamily: '"Playwrite VN", cursive',
-      fontOpticalSizing: "auto",
-      fontSize: "30px",
-      fontWeight: "900",
-    },
-    firstHeadder: {
-      fontFamily: '"Playwrite GB S", cursive',
-      fontSize: "35px",
-      fontWeight: "900",
-    },
-  };
-
   return (
-    <header className=" text-white">
-      <div className="container h-[100vh] m-auto flex flex-col justify-center gap-10 items-start">
-        <div>
-          <img
-            src={profile}
-            alt="Profile"
-            className=" w-52 h-52 object-cover rounded-full shadow-2xl"
-          />
+    <header className="pt-28 md:pt-36 pb-14">
+      <div className="flex items-center gap-2 mb-8 animate-fade-in">
+        <span className="relative flex h-2.5 w-2.5">
+          <span className="absolute inline-flex h-full w-full rounded-full bg-accent opacity-60 animate-ping" />
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent" />
+        </span>
+        <span className="text-sm text-muted">Available for opportunities</span>
+      </div>
+
+      <div className="flex flex-col-reverse sm:flex-row sm:items-center gap-8 sm:gap-10">
+        <div className="flex-1 animate-fade-up">
+          <p className="text-muted text-lg mb-3">Hey, I'm</p>
+          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl leading-[0.95] tracking-tight text-fg">
+            Lagnajit
+            <br />
+            Moharana
+          </h1>
+          <p className="mt-6 text-lg text-muted max-w-md leading-relaxed">
+            Full-stack developer building scalable applications, with a focus on{" "}
+            <span className="text-fg">cloud infrastructure</span> and{" "}
+            <span className="text-fg">DevOps</span>. Currently an App Development
+            Associate at Accenture.
+          </p>
         </div>
-        <div className="flex flex-col gap-7">
-          <div className="flex flex-col gap-3">
-            <h1 style={style.firstHeadder} className=" font-bold">
-              Hey there 👋
-            </h1>
-            <h1 className="text-5xl font-bold">
-              <span style={style.spanStyle}>I'm</span> Lagnajit Moharana
-            </h1>
+
+        <div className="shrink-0 animate-fade-in">
+          <div className="relative">
+            <div className="absolute -inset-2 rounded-full bg-accent/10 blur-xl" />
+            <img
+              src={profile}
+              alt="Lagnajit Moharana"
+              className="relative w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-full ring-1 ring-border"
+            />
           </div>
-          <div className="flex flex-col gap-1 text-gray-300">
-            <p>ASE at Accenture | Full-Stack Developer</p>
-            <p>
-              Expertise in Cloud Platforms and DevOps | Graduate IT & Management
-              2024
-            </p>
-          </div>
-          <div className="flex space-x-6 mt-2">
+        </div>
+      </div>
+
+      <div className="mt-9 flex flex-wrap items-center gap-4 animate-fade-up">
+        <a
+          href="https://github.com/Lagnajit09/lagnajitmoharana.com/raw/master/LagnajitMoharana.pdf"
+          download
+          className="inline-flex items-center gap-2 rounded-full bg-fg text-bg px-5 py-2.5 text-sm font-medium hover:opacity-90 transition-opacity"
+        >
+          <FiDownload size={16} /> Résumé
+        </a>
+        <a
+          href="#contact"
+          onClick={(e) => {
+            e.preventDefault();
+            document
+              .getElementById("contact")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
+          className="inline-flex items-center gap-1.5 rounded-full border border-border px-5 py-2.5 text-sm font-medium text-fg hover:border-accent hover:text-accent transition-colors"
+        >
+          Get in touch <FiArrowUpRight size={16} />
+        </a>
+
+        <div className="flex items-center gap-1 sm:ml-2">
+          {socials.map(({ icon: Icon, href, label }) => (
             <a
-              href="https://github.com/Lagnajit09"
+              key={label}
+              href={href}
               target="_blank"
-              className="text-gray-400 hover:text-white"
+              rel="noreferrer"
+              aria-label={label}
+              className="p-2.5 rounded-full text-muted hover:text-fg hover:bg-surface transition-colors"
             >
-              <FaGithub className="w-7 h-7" />
+              <Icon size={18} />
             </a>
-            <a
-              href="https://www.linkedin.com/in/lagnajitmoharana2004/"
-              target="_blank"
-              className="text-gray-400 hover:text-white"
-            >
-              <FaLinkedin className="w-7 h-7" />
-            </a>
-            <a
-              href="https://x.com/m_lagnajit09"
-              target="_blank"
-              className="text-gray-400 hover:text-white"
-            >
-              <FaXTwitter className="w-7 h-7" />
-            </a>
-            <a
-              href="https://www.instagram.com/sketchify99/"
-              target="_blank"
-              className="text-gray-400 hover:text-white"
-            >
-              <FaInstagram className="w-7 h-7" />
-            </a>
-          </div>
-          <a
-            href="https://github.com/Lagnajit09/lagnajitmoharana.com/raw/master/LagnajitMoharana.pdf"
-            download
-          >
-            <button className="mt-4 w-fit bg-blue-500 text-white py-2 px-4 rounded hover:scale-105 transition-all ease-linear">
-              Download Resume
-            </button>
-          </a>
+          ))}
         </div>
       </div>
     </header>

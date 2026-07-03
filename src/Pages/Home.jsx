@@ -6,31 +6,25 @@ import Contact from "../components/Contact";
 import About from "../components/About";
 import Experience from "../components/Experience";
 import Certifications from "../components/Certifications";
+import Footer from "../components/Footer";
+import { useReveal } from "../hooks/useReveal";
 
 const Home = () => {
+  const containerRef = useReveal();
+
   return (
-    <div>
-      <div className="relative w-[95%] md:w-[75vw] m-auto md:flex gap-10 justify-between">
-        <div className="md:fixed md:w-[40%]">
-          <Header />
-        </div>
-        <div className="w-full flex flex-col items-end float-right">
-          <div className="md:w-[45%] pb-10 md:pt-20 md:pb-10 flex flex-col gap-5">
-            <About />
-            <Experience />
-            <Education />
-            <Certifications />
-            <Skills />
-            <Projects />
-            <Contact />
-            <p className=" text-gray-500 text-sm">
-              Loosely designed in Figma and coded in Visual Studio Code by yours
-              truly. Built with React.js and Tailwind CSS, deployed with
-              Firebase. All text is set in the Inter typeface.
-            </p>
-          </div>
-        </div>
-      </div>
+    <div ref={containerRef} className="max-w-4xl mx-auto px-5 sm:px-8">
+      <Header />
+      <main className="divide-y divide-border">
+        <About />
+        <Experience />
+        <Education />
+        <Certifications />
+        <Skills />
+        <Projects />
+        <Contact />
+      </main>
+      <Footer />
     </div>
   );
 };

@@ -1,35 +1,45 @@
+import { FiArrowUpRight } from "react-icons/fi";
+import Section from "./Section";
 import { certificates } from "../constants/certificates";
 
 const Certifications = () => {
   return (
-    <section id="section" className=" pt-5">
-      <div className="container mx-auto">
-        <h2 className="text-gray-300 text-2xl font-bold">Certifications</h2>
-        {certificates.map((cert, index) => (
-          <div
-            className="flex mt-2 gap-3 items-center text-gray-300/85 p-3 rounded"
-            key={index}
+    <Section id="certifications" label="Credentials" title="Certifications">
+      <div className="grid sm:grid-cols-2 gap-4">
+        {certificates.map((cert) => (
+          <a
+            key={cert.id}
+            href={cert.verifyLink}
+            target="_blank"
+            rel="noreferrer"
+            className="group rounded-xl border border-border p-5 hover:border-accent/50 hover:bg-surface transition-colors"
           >
-            <div className="bg-gray-800 h-fit rounded-full p-2">
-              <img src={cert.logo} alt="AWS_Logo" className="w-6 h-6" />
+            <div className="flex items-start gap-3">
+              <div className="w-10 h-10 rounded-lg bg-surface ring-1 ring-border flex items-center justify-center shrink-0">
+                <img
+                  src={cert.logo}
+                  alt={cert.company}
+                  className="w-6 h-6 object-contain"
+                />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="font-medium text-fg leading-snug flex items-start gap-1">
+                  {cert.name}
+                  <FiArrowUpRight
+                    size={15}
+                    className="shrink-0 mt-0.5 text-subtle group-hover:text-accent transition-colors"
+                  />
+                </h3>
+                <p className="text-sm text-muted mt-1">{cert.company}</p>
+                <p className="text-xs text-subtle mt-1">
+                  {cert.issuedDate} — {cert.expiredDate}
+                </p>
+              </div>
             </div>
-            <div className={`flex flex-col bg-transparent`}>
-              <a
-                className="font-semibold hover:underline"
-                href={cert.verifyLink}
-                target="_blank"
-              >
-                {cert.name}
-              </a>
-              <p className="text-sm">{cert.company}</p>
-              <p className="text-sm">
-                {cert.issuedDate} - {cert.expiredDate}
-              </p>
-            </div>
-          </div>
+          </a>
         ))}
       </div>
-    </section>
+    </Section>
   );
 };
 
