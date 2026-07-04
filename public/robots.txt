@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lagnajitmoharana08.web.app/sitemap.xml
+Sitemap: https://lagnajitmoharana.web.app/sitemap.xml
