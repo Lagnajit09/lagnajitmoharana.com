@@ -1,16 +1,29 @@
-import FigmaBlog from "../assets/blogs/FigmaBlog.jpeg";
-import MediumBlog from "../assets/blogs/MediumBlog.jpeg";
-import StudyBuddyBlog from "../assets/blogs/StudyBuddyBlog.jpeg";
 import DockerBlog from "../assets/blogs/docker.png";
-import PythonBlog from "../assets/blogs/pythonBlog.svg";
+import XArticle1 from "../assets/blogs/x_post_1.webp";
+import XArticle2 from "../assets/blogs/x_post_2.jpg";
+import Autosage from "../assets/blogs/autosage.png";
 
 export const blogs = [
   {
-    name: "100xPython: 0 to 100",
-    link: "https://lmdev09.notion.site/100xPython-07771bf20177446ca2b775241d42d959",
-    image: PythonBlog,
+    name: "How I Built Autosage: A Remote Automation Platform with an AI Copilot",
+    link: "https://lmdev09.notion.site/Autosage-A-Remote-Automation-Platform-with-an-AI-Copilot-393146351df1802a9f25f137dcf501ac",
+    image: Autosage,
     description:
-      "Python is a versatile, powerful, and readable programming language, perfect for beginners and experienced developers. Its extensive libraries and frameworks support a wide range of applications, including web development, data analysis, artificial intelligence, scientific computing, and more.",
+      "Built an AI-powered automation platform to control, orchestrate, and monitor infrastructure from one place. The built-in AI copilot allows users to automate tasks, manage resources, and gain insights into their systems.",
+  },
+  {
+    name: "How a Transformer Actually Learns — Loss, Backprop & Going Deeper",
+    link: "https://x.com/m_lagnajit09/status/2070404529917677667?s=20",
+    image: XArticle2,
+    description:
+      "Training a Transformer model involves optimizing millions of parameters through concepts like Multi-Head Attention, Neural Networks, backpropagation, and learning rate optimization. These allow the model to learn patterns in data, perform tasks like language understanding and generation effectively.",
+  },
+  {
+    name: "How Transformers Actually Work — From First Principles",
+    link: "https://x.com/m_lagnajit09/status/2067852406612992187?s=20",
+    image: XArticle1,
+    description:
+      "Transformers are the foundation of modern AI systems, enabling models to understand language and complex data by using attention mechanisms. They analyze relationships between all parts of the input at once, allowing them to capture context, meaning, and long-range dependencies efficiently.",
   },
   {
     name: "Docker: Way to Containerization",
@@ -18,26 +31,5 @@ export const blogs = [
     image: DockerBlog,
     description:
       "Docker is an open-source platform that allows developers to automate the deployment of applications in lightweight, portable containers. These containers package everything needed to run an application, ensuring consistent performance across different environments.",
-  },
-  {
-    name: "Figma: Designer's Choice",
-    link: "https://lmdev09.notion.site/Project-Figma-Clone-714af7682fd248d0bb671c90f1d82c3c",
-    image: FigmaBlog,
-    description:
-      "A Figma-like design website provides an intuitive, collaborative platform for creating and prototyping user interfaces, offering robust tools for designing, sharing, and iterating on digital designs in real-time.",
-  },
-  {
-    name: "Medium: Blogging Platform",
-    link: "https://lmdev09.notion.site/Project-Medium-Clone-9e9e079351c74d329b4c49e3efc20936",
-    image: MediumBlog,
-    description:
-      "Medium is an advanced and feature-rich blogging platform designed to enhance your writing and reading experience.",
-  },
-  {
-    name: "StudyBuddy: Virtual Study Platform",
-    link: "https://lmdev09.notion.site/Project-StudyBuddy-e680d3bc3e1643b891e4fb0f71f8f265",
-    image: StudyBuddyBlog,
-    description:
-      "StudyBuddy is an innovative online platform aimed at fostering a collaborative studying environment. It integrates AI-powered study resources from renowned educational platforms, real-time note-taking capabilities, and various chat options, ensuring students have everything they need to succeed.",
   },
 ];

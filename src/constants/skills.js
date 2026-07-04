@@ -19,6 +19,8 @@ import Kubernetes from "../assets/skills/kubernetes.svg";
 import PyTorch from "../assets/skills/pytorch.svg";
 import HuggingFace from "../assets/skills/huggingface.svg";
 import LangChain from "../assets/skills/langchain.svg";
+import AI from "../assets/skills/ai.svg";
+import RAG from "../assets/skills/rag.svg";
 import Django from "../assets/skills/django.svg";
 import FastAPI from "../assets/skills/fastapi.svg";
 import Redis from "../assets/skills/redis.svg";
@@ -26,9 +28,9 @@ import Git from "../assets/skills/git.svg";
 import Github from "../assets/skills/github.svg";
 
 /**
- * `darkBg: true` — icon is white/transparent and needs a dark pill background
- *                  to be visible in both light and dark themes (e.g. NextJS, GitHub).
- * `text: true`   — no icon; render the name as a styled monogram instead.
+ * `darkBg: true`     — icon needs a pill background to be visible.
+ * `darkInvert: true` — icon is dark-colored; invert it in dark mode so it reads as white.
+ * `text: true`       — no icon; render the name as a styled monogram instead.
  */
 export const skillGroups = [
   {
@@ -39,10 +41,10 @@ export const skillGroups = [
       { name: "GCP", icon: GCP },
       { name: "Docker", icon: Docker },
       { name: "Kubernetes", icon: Kubernetes },
-      { name: "Ansible", icon: Ansible },
+      { name: "Ansible", icon: Ansible, darkBg: true, darkInvert: true },
       { name: "Terraform", icon: Terraform },
       { name: "Git", icon: Git },
-      { name: "GitHub", icon: Github, darkBg: true },
+      { name: "GitHub", icon: Github, darkBg: true, darkInvert: true },
     ],
   },
   {
@@ -51,8 +53,8 @@ export const skillGroups = [
       { name: "PyTorch", icon: PyTorch },
       { name: "HuggingFace", icon: HuggingFace },
       { name: "LangChain", icon: LangChain },
-      { name: "Agentic AI", text: true },
-      { name: "RAG", text: true },
+      { name: "Agentic AI", icon: AI, darkInvert: true },
+      { name: "RAG", icon: RAG, darkInvert: true },
     ],
   },
   {
@@ -73,7 +75,7 @@ export const skillGroups = [
       { name: "Django", icon: Django },
       { name: "FastAPI", icon: FastAPI },
       { name: "Redis", icon: Redis },
-      { name: "Prisma", icon: Prisma, darkBg: true },
+      { name: "Prisma", icon: Prisma, darkBg: true, darkInvert: true },
     ],
   },
   {

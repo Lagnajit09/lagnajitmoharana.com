@@ -50,26 +50,26 @@ const SkillIcon = ({ item }) => {
     );
   }
 
-  // darkBg: icon is white — always show on a dark pill so it's visible in
-  // both light and dark themes without inverting (which breaks on hover)
+  // darkBg: icon needs a pill container. darkInvert flips dark icons to white in dark mode.
   if (item.darkBg) {
     return (
-      <div className="w-9 h-9 rounded-lg bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center p-1.5 group-hover:opacity-100 transition-opacity opacity-80">
+      <div className="w-9 h-9 rounded-lg bg-zinc-300 dark:bg-zinc-700 flex items-center justify-center p-1.5 opacity-80 group-hover:opacity-100 transition-opacity">
         <img
           src={item.icon}
           alt={item.name}
-          className="w-full h-full object-contain"
+          className={`w-full h-full object-contain${item.darkInvert ? " dark:invert" : ""}`}
         />
       </div>
     );
   }
 
-  // Standard icon — grayscale at rest, full color on hover
+  // Standard icon — grayscale at rest, full color on hover.
+  // darkInvert: icon is dark-colored, flip to white in dark mode so it stays readable.
   return (
     <img
       src={item.icon}
       alt={item.name}
-      className="w-9 h-9 object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-200"
+      className={`w-9 h-9 object-contain opacity-70 group-hover:opacity-100 transition-all duration-200${item.darkInvert ? " grayscale dark:invert" : " grayscale group-hover:grayscale-0"}`}
     />
   );
 };

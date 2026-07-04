@@ -83,7 +83,7 @@ const Blogs = () => {
           Threads & thoughts
         </h1>
         <p className="text-muted mt-3 max-w-lg">
-          Deep dives, project write-ups, and notes from things I've learned —
+          Deep dives, project write-ups, and articles from things I've learned —
           scroll to follow the thread.
         </p>
       </div>
@@ -120,8 +120,8 @@ const Blogs = () => {
                       isActive
                         ? "w-4 h-4 bg-accent ring-4 ring-accent/20"
                         : isPassed
-                        ? "w-3 h-3 bg-accent"
-                        : "w-3 h-3 bg-bg border-2 border-border"
+                          ? "w-3 h-3 bg-accent"
+                          : "w-3 h-3 bg-bg border-2 border-border"
                     }`}
                   />
                 </span>
@@ -147,12 +147,18 @@ const ThreadCard = ({ blog, isActive, index }) => (
         : "border-border hover:border-accent/30 hover:bg-surface/60"
     }`}
   >
-    <div className="flex items-center gap-2 mb-3">
-      <span className="text-xs font-medium text-subtle tabular-nums">
-        {String(index + 1).padStart(2, "0")}
-      </span>
-      <span className="h-px w-6 bg-border" />
-      <span className="text-xs text-subtle">Thread</span>
+    <div className="flex items-start justify-between gap-3 mb-3">
+      <div className="flex items-center gap-2">
+        <span className="text-xs font-medium text-subtle tabular-nums">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        <span className="h-px w-6 bg-border" />
+        <span className="text-xs text-subtle">Thread</span>
+      </div>
+      <FiArrowUpRight
+        size={18}
+        className="shrink-0 text-subtle group-hover:text-accent group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all"
+      />
     </div>
 
     <div className="flex flex-col sm:flex-row gap-5">
@@ -164,12 +170,8 @@ const ThreadCard = ({ blog, isActive, index }) => (
         />
       </div>
       <div className="flex-1 min-w-0">
-        <h2 className="text-xl font-semibold text-fg group-hover:text-accent transition-colors flex items-start gap-1.5">
+        <h2 className="text-xl font-semibold text-fg group-hover:text-accent transition-colors">
           {blog.name}
-          <FiArrowUpRight
-            size={17}
-            className="shrink-0 mt-1 text-subtle group-hover:text-accent group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all"
-          />
         </h2>
         <p className="text-sm text-muted mt-2 leading-relaxed line-clamp-4">
           {blog.description}
