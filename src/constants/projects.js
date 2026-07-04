@@ -11,6 +11,14 @@ export const projects = [
   {
     id: "10",
     year: "2025 - 2026",
+    title: "AutoSage Docs",
+    link: "https://autosagexdocs.web.app/",
+    github: "https://github.com/Lagnajit09/autosage-docs",
+    tech: ["Docusaurus", "Django", "RAG", "Supabase - VectorDB"],
+  },
+  {
+    id: "9",
+    year: "2025 - 2026",
     title: "AutoSage: Infrastructure Automation Platform",
     link: "https://autosagex.web.app/",
     github: "https://github.com/Lagnajit09/autosage",
@@ -26,14 +34,6 @@ export const projects = [
       "Supabase",
       "Docker",
     ],
-  },
-  {
-    id: "9",
-    year: "2025 - 2026",
-    title: "AutoSage Docs",
-    link: "https://autosagexdocs.web.app/",
-    github: "https://github.com/Lagnajit09/autosage-docs",
-    tech: ["Docusaurus", "Django", "RAG", "Supabase - VectorDB"],
   },
   {
     id: "8",
@@ -53,7 +53,7 @@ export const projects = [
   },
   {
     id: "7",
-    year: "2024",
+    year: "2024 - 2025",
     title: "SwiftPay",
     link: "https://swiftpaylm.vercel.app/",
     github: "https://github.com/Lagnajit09/walletX",

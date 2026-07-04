@@ -23,13 +23,13 @@ const Certifications = () => {
                 />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="font-medium text-fg leading-snug flex items-start gap-1">
-                  {cert.name}
+                <div className="flex items-start justify-between gap-2">
+                  <h3 className="font-medium text-fg leading-snug">{cert.name}</h3>
                   <FiArrowUpRight
                     size={15}
                     className="shrink-0 mt-0.5 text-subtle group-hover:text-accent transition-colors"
                   />
-                </h3>
+                </div>
                 <p className="text-sm text-muted mt-1">{cert.company}</p>
                 <p className="text-xs text-subtle mt-1">
                   {cert.issuedDate} — {cert.expiredDate}

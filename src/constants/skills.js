@@ -58,8 +58,8 @@ export const skillGroups = [
   {
     label: "Frontend",
     skills: [
-      { name: "React", icon: ReactJS },
-      { name: "Next.js", icon: NextJS, darkBg: true },
+      { name: "ReactJS", icon: ReactJS },
+      { name: "NextJS", icon: NextJS, darkBg: true },
       { name: "TypeScript", icon: TypeScript },
       { name: "JavaScript", icon: JavaScript },
       { name: "Tailwind CSS", icon: TailwindCSS },
@@ -68,7 +68,7 @@ export const skillGroups = [
   {
     label: "Backend",
     skills: [
-      { name: "Express.js", icon: ExpressJS },
+      { name: "ExpressJS", icon: ExpressJS },
       { name: "Python", icon: Python },
       { name: "Django", icon: Django },
       { name: "FastAPI", icon: FastAPI },

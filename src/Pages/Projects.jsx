@@ -29,7 +29,7 @@ const Projects = () => {
       </h1>
       <p className="text-muted mt-3 max-w-lg">
         A collection of things I've designed and built — from full-stack web
-        apps to mobile.
+        apps to training models.
       </p>
 
       <div className="mt-10 flex flex-col">
