@@ -1,0 +1,3 @@
+# Copy this file to .dev.vars and fill in your values for local development.
+# .dev.vars is gitignored and loaded automatically by `wrangler dev`.
+RESEND_API_KEY=re_your_api_key_here

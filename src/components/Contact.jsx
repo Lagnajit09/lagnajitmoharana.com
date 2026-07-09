@@ -1,23 +1,70 @@
-import { useState } from "react";
-import { FiMapPin, FiMail, FiArrowUpRight } from "react-icons/fi";
+import { useState, useEffect } from "react";
+import { FiMapPin, FiMail, FiArrowUpRight, FiCheckCircle, FiAlertCircle } from "react-icons/fi";
 import Section from "./Section";
+
+const WORKER_URL = import.meta.env.VITE_CONTACT_WORKER_URL;
+
+const Toast = ({ status }) => {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (status === "sent" || status === "error") {
+      setVisible(true);
+      const t = setTimeout(() => setVisible(false), 2000);
+      return () => clearTimeout(t);
+    }
+  }, [status]);
+
+  if (!visible) return null;
+
+  const isSuccess = status === "sent";
+
+  return (
+    <div className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-xl border px-4 py-3 text-sm shadow-lg backdrop-blur-sm transition-all duration-300
+      ${isSuccess
+        ? "border-accent/30 bg-surface text-fg"
+        : "border-red-500/30 bg-surface text-fg"
+      }`}
+    >
+      {isSuccess
+        ? <FiCheckCircle size={16} className="text-accent shrink-0" />
+        : <FiAlertCircle size={16} className="text-red-400 shrink-0" />
+      }
+      <span>
+        {isSuccess
+          ? "Message sent — I'll get back to you soon."
+          : "Something went wrong. Please try again."}
+      </span>
+    </div>
+  );
+};
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("idle"); // "idle" | "sending" | "sent" | "error"
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Portfolio message from ${formData.name}`);
-    const body = encodeURIComponent(
-      `${formData.message}\n\n— ${formData.name} (${formData.email})`
-    );
-    window.location.href = `mailto:2004lagnajitmoharana@gmail.com?subject=${subject}&body=${body}`;
-    setFormData({ name: "", email: "", message: "" });
+    setStatus("sending");
+    try {
+      const res = await fetch(WORKER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error("non-2xx");
+      setStatus("sent");
+      setFormData({ name: "", email: "", message: "" });
+    } catch {
+      setStatus("error");
+    } finally {
+      setTimeout(() => setStatus("idle"), 2200);
+    }
   };
 
   const inputClass =
@@ -95,16 +142,21 @@ const Contact = () => {
           </div>
           <button
             type="submit"
-            className="group inline-flex items-center justify-center gap-1.5 rounded-full bg-fg text-bg px-5 py-2.5 text-sm font-medium hover:opacity-90 transition-opacity"
+            disabled={status === "sending"}
+            className="group inline-flex items-center justify-center gap-1.5 rounded-full bg-fg text-bg px-5 py-2.5 text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Send message
-            <FiArrowUpRight
-              size={16}
-              className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"
-            />
+            {status === "sending" ? "Sending…" : "Send message"}
+            {status !== "sending" && (
+              <FiArrowUpRight
+                size={16}
+                className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"
+              />
+            )}
           </button>
+
         </form>
       </div>
+      <Toast status={status} />
     </Section>
   );
 };

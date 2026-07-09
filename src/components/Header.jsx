@@ -42,7 +42,7 @@ function Header() {
             <span className="text-fg">AI & Machine Learning</span>, with a
             foundation in <span className="text-fg">Cloud Infrastructure</span>{" "}
             and <span className="text-fg">DevOps</span>. <br /> App Development
-            Analyst at Accenture.
+            Analyst | @Accenture.
           </p>
         </div>
 

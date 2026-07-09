@@ -1,0 +1,9 @@
+name = "contact-worker"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+TO_EMAIL = "2004lagnajitmoharana@gmail.com"
+FROM_EMAIL = "Portfolio Contact <onboarding@resend.dev>"
+ALLOWED_ORIGIN = "https://lagnajitmoharana.web.app"
+# Set the secret via: wrangler secret put RESEND_API_KEY
