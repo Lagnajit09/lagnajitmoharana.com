@@ -1,5 +1,22 @@
 export const projects = [
   {
+    id: "12",
+    year: "2026",
+    title: "MiniGPT-V2: A Miniature GPT Model for Text Generation",
+    link: "https://minigpt-v2.onrender.com/",
+    github: "https://github.com/Lagnajit09/100x_AI_ML/tree/main/minigpt-v2",
+    tech: [
+      "PyTorch",
+      "Gradio",
+      "Transformers & Attention",
+      "RMSnorm",
+      "SwiGLU",
+      "RoPE",
+      "GQA",
+      "BPE Tokenization",
+    ],
+  },
+  {
     id: "11",
     year: "2026",
     title: "MiniGPT-Shakespeare: Trained GPT Model for Text Generation",
@@ -113,11 +130,20 @@ export const topProjects = [
       "AutoSage is an AI-driven infrastructure automation platform that streamlines and optimizes cloud operations through workflows, RAG and agentic AI, enabling users to manage and scale their infrastructure efficiently.",
   },
   {
-    title: "MiniGPT-Shakespeare: Trained GPT Model for Text Generation",
-    link: "https://huggingface.co/spaces/m-lagnajit/minigpt-shakespeare",
-    tech: ["PyTorch", "Gradio", "HuggingFace", "Transformers & Attention"],
+    title: "MiniGPT-V2: A Miniature GPT Model for Text Generation",
+    link: "https://huggingface.co/spaces/m-lagnajit/minigpt-v2",
+    tech: [
+      "PyTorch",
+      "Gradio",
+      "Transformers & Attention",
+      "RMSnorm",
+      "SwiGLU",
+      "RoPE",
+      "GQA",
+      "BPE Tokenization",
+    ],
     description:
-      "MiniGPT-Shakespeare is a specialized GPT model trained to generate text in the style of William Shakespeare. Built a transformer-based architecture using PyTorch and fine-tuned it on a curated dataset of Shakespearean works, enabling it to produce authentic and stylistically accurate text.",
+      "A GPT-style transformer built entirely from scratch in PyTorch, trained on the TinyStories dataset. It incorporates advanced techniques like RMSnorm, SwiGLU, RoPE, GQA, LR-Scheduling and BPE tokenization to enhance performance and efficiency in text generation tasks.",
   },
   {
     title: "Swiftpay: Payment Application",

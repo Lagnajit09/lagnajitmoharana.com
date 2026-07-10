@@ -1,11 +1,19 @@
 import DockerBlog from "../assets/blogs/docker.png";
 import XArticle1 from "../assets/blogs/x_post_1.webp";
 import XArticle2 from "../assets/blogs/x_post_2.jpg";
+import XArticle3 from "../assets/blogs/x_post_3.png";
 import Autosage from "../assets/blogs/autosage.png";
 
 export const blogs = [
   {
-    name: "How I Built Autosage: A Remote Automation Platform with an AI Copilot",
+    name: "Coherent Isn't the Same as Correct: What I Learned Building a GPT From Scratch",
+    link: "https://x.com/m_lagnajit09/status/2075518911228051771?s=20",
+    image: XArticle3,
+    description:
+      "Built a mini GPT-v2 from scratch using a modern Transformer stack: RMSNorm, GQA, SwiGLU, and RoPE, along with a BPE tokenizer implemented from scratch. Trained on 15,000 TinyStories samples with 6.8M parameters in Google Colab, then deployed the model on Render with Gradio for interactive inference.",
+  },
+  {
+    name: "Introducing Autosage: A Remote Automation Platform with an AI Copilot",
     link: "https://lmdev09.notion.site/Autosage-A-Remote-Automation-Platform-with-an-AI-Copilot-393146351df1802a9f25f137dcf501ac",
     image: Autosage,
     description:
