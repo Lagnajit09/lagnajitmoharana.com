@@ -7,7 +7,7 @@ const Blogs = () => {
   const navigate = useNavigate();
   const threadRefs = useRef([]);
   const containerRef = useRef(null);
-  const [progress, setProgress] = useState(0); // 0..1 fill of the track
+  const [progress, setProgress] = useState(0);
   const [active, setActive] = useState(0);
 
   useEffect(() => {
@@ -15,15 +15,11 @@ const Blogs = () => {
       const el = containerRef.current;
       if (!el) return;
 
-      // Track fill: how far through the list container we've scrolled.
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight;
       const total = rect.height - vh;
       const scrolled = Math.min(Math.max(-rect.top, 0), Math.max(total, 1));
 
-      // Near the bottom of the page the last thread can never reach the
-      // viewport center (there's nothing left to scroll), so treat reaching
-      // the page bottom as fully complete: full track + last thread active.
       const atBottom =
         window.innerHeight + window.scrollY >=
         document.documentElement.scrollHeight - 2;
@@ -36,7 +32,6 @@ const Blogs = () => {
         return;
       }
 
-      // Active thread: the one whose midpoint is closest to viewport center.
       const center = vh / 2;
       let closest = 0;
       let closestDist = Infinity;
@@ -63,26 +58,24 @@ const Blogs = () => {
   }, []);
 
   return (
-    <div className="max-w-4xl mx-auto px-5 sm:px-8 pt-28 md:pt-36 pb-24 min-h-screen">
+    <div className="max-w-6xl mx-auto px-5 sm:px-8 pt-28 md:pt-36 pb-24 min-h-screen">
       <button
         onClick={() => navigate("/")}
-        className="group inline-flex items-center gap-1.5 text-sm text-muted hover:text-fg transition-colors mb-8"
+        className="group inline-flex items-center gap-2 font-mono text-sm uppercase tracking-wide text-muted hover:text-fg transition-colors mb-10"
       >
         <FiArrowLeft
           size={16}
-          className="group-hover:-translate-x-0.5 transition-transform"
+          className="group-hover:-translate-x-1 transition-transform"
         />
         Back home
       </button>
 
-      <div className="mb-14">
-        <span className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-          Writing
-        </span>
-        <h1 className="font-display text-4xl md:text-5xl tracking-tight text-fg mt-3">
-          Threads & thoughts
+      <div className="mb-16">
+        <span className="eyebrow">Writing</span>
+        <h1 className="font-display font-black text-4xl sm:text-5xl md:text-6xl tracking-tight text-fg mt-4">
+          Threads &amp; thoughts
         </h1>
-        <p className="text-muted mt-3 max-w-lg">
+        <p className="text-muted mt-4 max-w-xl text-lg leading-relaxed">
           Deep dives, project write-ups, and articles from things I've learned —
           scroll to follow the thread.
         </p>
@@ -91,7 +84,7 @@ const Blogs = () => {
       <div ref={containerRef} className="relative">
         {/* Vertical timeline track */}
         <div
-          className="absolute left-[7px] top-2 bottom-2 w-px bg-border"
+          className="absolute left-[7px] top-2 bottom-2 w-0.5 bg-border-soft"
           aria-hidden="true"
         >
           <div
@@ -110,18 +103,17 @@ const Blogs = () => {
                 ref={(el) => (threadRefs.current[index] = el)}
                 className="relative pl-10 sm:pl-14"
               >
-                {/* Node */}
                 <span
                   className="absolute left-0 top-1.5 flex items-center justify-center"
                   aria-hidden="true"
                 >
                   <span
-                    className={`block rounded-full transition-all duration-300 ${
+                    className={`block transition-all duration-300 ${
                       isActive
                         ? "w-4 h-4 bg-accent ring-4 ring-accent/20"
                         : isPassed
-                          ? "w-3 h-3 bg-accent"
-                          : "w-3 h-3 bg-bg border-2 border-border"
+                          ? "w-3.5 h-3.5 bg-accent"
+                          : "w-3.5 h-3.5 bg-bg border-2 border-border-soft"
                     }`}
                   />
                 </span>
@@ -141,19 +133,21 @@ const ThreadCard = ({ blog, isActive, index }) => (
     href={blog.link}
     target="_blank"
     rel="noreferrer"
-    className={`group block rounded-2xl border p-5 sm:p-6 transition-all duration-300 ${
+    className={`group block border p-5 sm:p-6 transition-all duration-300 ${
       isActive
-        ? "border-accent/40 bg-surface shadow-lg shadow-black/5 sm:-translate-y-0.5"
-        : "border-border hover:border-accent/30 hover:bg-surface/60"
+        ? "border-border bg-surface shadow-hard-lg -translate-x-1 -translate-y-1"
+        : "border-border-soft hover:border-border hover:bg-surface"
     }`}
   >
-    <div className="flex items-start justify-between gap-3 mb-3">
-      <div className="flex items-center gap-2">
-        <span className="text-xs font-medium text-subtle tabular-nums">
+    <div className="flex items-start justify-between gap-3 mb-4">
+      <div className="flex items-center gap-2.5">
+        <span className="font-mono text-xs font-semibold text-accent-deep tabular-nums">
           {String(index + 1).padStart(2, "0")}
         </span>
-        <span className="h-px w-6 bg-border" />
-        <span className="text-xs text-subtle">Thread</span>
+        <span className="h-px w-8 bg-border-soft" />
+        <span className="font-mono text-[0.7rem] uppercase tracking-wider text-subtle">
+          Thread
+        </span>
       </div>
       <FiArrowUpRight
         size={18}
@@ -162,7 +156,7 @@ const ThreadCard = ({ blog, isActive, index }) => (
     </div>
 
     <div className="flex flex-col sm:flex-row gap-5">
-      <div className="shrink-0 overflow-hidden rounded-xl border border-border sm:w-40 h-40 sm:h-auto">
+      <div className="shrink-0 overflow-hidden border border-border-soft sm:w-44 h-40 sm:h-auto">
         <img
           src={blog.image}
           alt={blog.name}
@@ -170,10 +164,10 @@ const ThreadCard = ({ blog, isActive, index }) => (
         />
       </div>
       <div className="flex-1 min-w-0">
-        <h2 className="text-xl font-semibold text-fg group-hover:text-accent transition-colors">
+        <h2 className="font-display font-bold text-xl sm:text-2xl text-fg group-hover:text-accent-deep transition-colors leading-snug">
           {blog.name}
         </h2>
-        <p className="text-sm text-muted mt-2 leading-relaxed line-clamp-4">
+        <p className="text-sm text-muted mt-2.5 leading-relaxed line-clamp-4">
           {blog.description}
         </p>
       </div>

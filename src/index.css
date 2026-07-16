@@ -1,33 +1,41 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* Light theme — near-monochrome with a single accent */
-  --bg: 250 250 249;
-  --surface: 255 255 255;
-  --border: 231 229 228;
-  --fg: 28 25 23;
-  --muted: 87 83 78;
-  --subtle: 120 113 108;
-  --accent: 234 88 12; /* warm amber-orange */
+  /* Light — Retro-Modern Technical: soft cream + carbon + international orange */
+  --bg: 252 249 248;        /* #fcf9f8 soft cream */
+  --surface: 255 255 255;   /* pure white cards */
+  --panel: 237 233 230;     /* tinted panel (Technical Arsenal bg) */
+  --border: 20 19 19;       /* carbon borders — hard, high-contrast */
+  --border-soft: 214 208 204;
+  --fg: 20 19 19;           /* #141313 carbon */
+  --muted: 74 70 68;
+  --subtle: 122 115 111;
+  --accent: 255 107 53;     /* #ff6b35 international orange */
+  --accent-deep: 200 66 22; /* deeper orange for italic serif accents */
+  --shadow: 20 19 19;       /* hard shadow color */
 }
 
 .dark {
-  /* Dark theme */
-  --bg: 10 10 11;
-  --surface: 22 22 24;
-  --border: 39 39 42;
-  --fg: 245 245 244;
-  --muted: 168 162 158;
-  --subtle: 120 113 108;
-  --accent: 251 146 60; /* softened orange for dark */
+  /* Dark — carbon canvas, warm cream ink, same orange */
+  --bg: 18 17 16;
+  --surface: 28 26 25;
+  --panel: 34 31 29;
+  --border: 245 240 236;    /* light borders in dark to keep the outlined/brutalist look */
+  --border-soft: 58 54 51;
+  --fg: 245 240 236;
+  --muted: 176 168 162;
+  --subtle: 128 120 114;
+  --accent: 255 122 71;
+  --accent-deep: 255 138 92;
+  --shadow: 0 0 0;
 }
 
 * {
-  border-color: rgb(var(--border));
+  border-color: rgb(var(--border-soft));
 }
 
 body {
@@ -43,7 +51,7 @@ html {
 }
 
 ::selection {
-  background: rgb(var(--accent) / 0.25);
+  background: rgb(var(--accent) / 0.28);
 }
 
 /* Scrollbar */
@@ -51,17 +59,74 @@ html {
   display: none;
 }
 ::-webkit-scrollbar {
-  width: 9px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgb(var(--border));
-  border-radius: 10px;
+  background: rgb(var(--border-soft));
+  border-radius: 0;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(var(--subtle));
+}
+
+@layer components {
+  /* Hard offset shadow — the signature brutalist treatment (no blur) */
+  .shadow-hard {
+    box-shadow: 4px 4px 0 0 rgb(var(--shadow));
+  }
+  .shadow-hard-sm {
+    box-shadow: 3px 3px 0 0 rgb(var(--shadow));
+  }
+  .shadow-hard-lg {
+    box-shadow: 6px 6px 0 0 rgb(var(--shadow));
+  }
+  .shadow-hard-accent {
+    box-shadow: 5px 5px 0 0 rgb(var(--accent));
+  }
+  /* Press-in interaction: shadow collapses, element nudges toward it */
+  .press {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .press:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0 0 rgb(var(--shadow));
+  }
+  .press:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 0 rgb(var(--shadow));
+  }
+
+  /* Mono technical eyebrow label */
+  .eyebrow {
+    display: inline-block;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgb(var(--accent-deep));
+  }
+
+  /* Tech badge — black chip, mono uppercase */
+  .badge {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1;
+    padding: 0.35rem 0.5rem;
+    background: rgb(var(--fg));
+    color: rgb(var(--bg));
+    white-space: nowrap;
+  }
+}
+
+.font-mono {
+  font-family: "JetBrains Mono", monospace;
 }
 
 /* Reveal-on-scroll utility */

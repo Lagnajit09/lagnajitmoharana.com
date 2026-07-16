@@ -7,15 +7,19 @@ export default {
       colors: {
         bg: "rgb(var(--bg) / <alpha-value>)",
         surface: "rgb(var(--surface) / <alpha-value>)",
+        panel: "rgb(var(--panel) / <alpha-value>)",
         border: "rgb(var(--border) / <alpha-value>)",
+        "border-soft": "rgb(var(--border-soft) / <alpha-value>)",
         fg: "rgb(var(--fg) / <alpha-value>)",
         muted: "rgb(var(--muted) / <alpha-value>)",
         subtle: "rgb(var(--subtle) / <alpha-value>)",
         accent: "rgb(var(--accent) / <alpha-value>)",
+        "accent-deep": "rgb(var(--accent-deep) / <alpha-value>)",
       },
       fontFamily: {
         sans: ['"Inter"', "system-ui", "sans-serif"],
-        display: ['"Instrument Serif"', "Georgia", "serif"],
+        display: ['"Playfair Display"', "Georgia", "serif"],
+        mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
       },
       keyframes: {
         "fade-up": {

@@ -114,24 +114,26 @@ export const topProjects = [
   {
     title: "AutoSage: Infrastructure Automation Platform",
     link: "https://autosagex.web.app/",
+    github: "https://github.com/Lagnajit09/autosage",
     tech: [
       "ReactJS",
       "Django",
       "Redis",
       "Celery",
       "GCP",
-      "Tailwind CSS",
-      "RAG",
-      "Agentic AI",
-      "Supabase",
       "Docker",
+      "Agentic AI",
+      "RAG",
+      "Tailwind CSS",
+      "Supabase",
     ],
     description:
       "AutoSage is an AI-driven infrastructure automation platform that streamlines and optimizes cloud operations through workflows, RAG and agentic AI, enabling users to manage and scale their infrastructure efficiently.",
   },
   {
     title: "MiniGPT-V2: A Miniature GPT Model for Text Generation",
-    link: "https://huggingface.co/spaces/m-lagnajit/minigpt-v2",
+    link: "https://minigpt-v2.onrender.com/",
+    github: "https://github.com/Lagnajit09/100x_AI_ML/tree/main/minigpt-v2",
     tech: [
       "PyTorch",
       "Gradio",
@@ -148,6 +150,7 @@ export const topProjects = [
   {
     title: "Swiftpay: Payment Application",
     link: "https://swiftpaylm.vercel.app/",
+    github: "https://github.com/Lagnajit09/walletX",
     tech: ["NextJS", "ExpressJS", "PostgreSQL", "Tailwind CSS", "Prisma"],
     description:
       "SwiftPay is a demo payment application that allows users to send and receive money instantly, connect with friends, and manage their finances with ease. It is built with a modern tech stack and offers a seamless user experience.",

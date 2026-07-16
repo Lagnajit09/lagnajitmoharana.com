@@ -1,19 +1,18 @@
 /**
- * Consistent section wrapper: an eyebrow label + optional title, with a
- * reveal-on-scroll animation. Keeps every home section visually aligned.
+ * Consistent section wrapper for the "Retro-Modern Technical" system:
+ * a mono uppercase eyebrow followed by a long 1px rule, then a high-contrast
+ * Playfair title. Reveal-on-scroll keeps sections aligned.
  */
 const Section = ({ id, label, title, children, className = "" }) => (
-  <section id={id} className={`py-12 md:py-16 reveal ${className}`}>
+  <section id={id} className={`py-14 md:py-20 reveal ${className}`}>
     {label && (
-      <div className="flex items-center gap-3 mb-8">
-        <span className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-          {label}
-        </span>
+      <div className="flex items-center gap-4 mb-8">
+        <span className="eyebrow whitespace-nowrap">{label}</span>
         <span className="h-px flex-1 bg-border" />
       </div>
     )}
     {title && (
-      <h2 className="font-display text-3xl md:text-4xl text-fg mb-6 tracking-tight">
+      <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-fg mb-8 tracking-tight leading-tight">
         {title}
       </h2>
     )}

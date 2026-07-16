@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
-import { FiMapPin, FiMail, FiArrowUpRight, FiCheckCircle, FiAlertCircle } from "react-icons/fi";
-import Section from "./Section";
+import {
+  FiMapPin,
+  FiMail,
+  FiSend,
+  FiCheckCircle,
+  FiAlertCircle,
+} from "react-icons/fi";
 
 const WORKER_URL = import.meta.env.VITE_CONTACT_WORKER_URL;
 
@@ -16,21 +21,20 @@ const Toast = ({ status }) => {
   }, [status]);
 
   if (!visible) return null;
-
   const isSuccess = status === "sent";
 
   return (
-    <div className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-xl border px-4 py-3 text-sm shadow-lg backdrop-blur-sm transition-all duration-300
-      ${isSuccess
-        ? "border-accent/30 bg-surface text-fg"
-        : "border-red-500/30 bg-surface text-fg"
+    <div
+      className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 border bg-surface px-4 py-3 text-sm shadow-hard transition-all duration-300 ${
+        isSuccess ? "border-border" : "border-red-500"
       }`}
     >
-      {isSuccess
-        ? <FiCheckCircle size={16} className="text-accent shrink-0" />
-        : <FiAlertCircle size={16} className="text-red-400 shrink-0" />
-      }
-      <span>
+      {isSuccess ? (
+        <FiCheckCircle size={16} className="text-accent shrink-0" />
+      ) : (
+        <FiAlertCircle size={16} className="text-red-500 shrink-0" />
+      )}
+      <span className="text-fg">
         {isSuccess
           ? "Message sent — I'll get back to you soon."
           : "Something went wrong. Please try again."}
@@ -41,7 +45,7 @@ const Toast = ({ status }) => {
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState("idle"); // "idle" | "sending" | "sent" | "error"
+  const [status, setStatus] = useState("idle");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -67,29 +71,42 @@ const Contact = () => {
     }
   };
 
+  const labelClass =
+    "font-mono text-xs font-semibold uppercase tracking-[0.15em] text-fg";
   const inputClass =
-    "mt-1.5 block w-full rounded-lg border border-border bg-surface/40 px-3.5 py-2.5 text-fg placeholder:text-subtle focus:outline-none focus:border-accent transition-colors";
+    "mt-2 block w-full border border-border bg-bg px-4 py-3 text-fg placeholder:text-subtle placeholder:font-normal focus:outline-none focus:shadow-hard-sm focus:-translate-x-0.5 focus:-translate-y-0.5 transition-all";
 
   return (
-    <Section id="contact" label="Contact" title="Let's build something">
-      <div className="grid md:grid-cols-2 gap-8 md:gap-10">
-        <div className="flex flex-col gap-6">
-          <p className="text-muted leading-relaxed">
+    <section id="contact" className="py-14 md:py-20 reveal">
+      <div className="flex items-center gap-4 mb-10">
+        <span className="eyebrow whitespace-nowrap">Contact</span>
+        <span className="h-px flex-1 bg-border" />
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-start">
+        <div className="flex flex-col gap-8">
+          <h2 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl text-fg leading-[0.95] tracking-tight">
+            Let's build something{" "}
+            <span className="italic text-accent-deep">extraordinary</span>.
+          </h2>
+
+          <p className="text-muted leading-relaxed max-w-md">
             Have a project in mind, a role to fill, or just want to say hi? My
-            inbox is always open — I'll try to get back to you.
+            inbox is always open — I'll try to get back to you within 24 hours.
           </p>
-          <div className="flex flex-col gap-3 text-sm">
+
+          <div className="flex flex-col gap-3">
             <a
               href="mailto:2004lagnajitmoharana@gmail.com"
-              className="group flex items-center gap-3 text-muted hover:text-fg transition-colors"
+              className="group flex items-center gap-3 font-mono text-sm text-muted hover:text-fg transition-colors"
             >
-              <span className="w-9 h-9 rounded-lg border border-border flex items-center justify-center group-hover:border-accent transition-colors">
+              <span className="w-10 h-10 border border-border flex items-center justify-center text-accent-deep group-hover:shadow-hard-sm group-hover:-translate-x-0.5 group-hover:-translate-y-0.5 transition-all">
                 <FiMail size={16} />
               </span>
               2004lagnajitmoharana@gmail.com
             </a>
-            <div className="flex items-center gap-3 text-muted">
-              <span className="w-9 h-9 rounded-lg border border-border flex items-center justify-center">
+            <div className="flex items-center gap-3 font-mono text-sm text-muted">
+              <span className="w-10 h-10 border border-border flex items-center justify-center text-accent-deep">
                 <FiMapPin size={16} />
               </span>
               Odisha, India — 753004
@@ -97,15 +114,19 @@ const Contact = () => {
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form
+          onSubmit={handleSubmit}
+          className="border border-border bg-surface p-6 sm:p-8 shadow-hard-lg flex flex-col gap-5"
+        >
           <div>
-            <label htmlFor="name" className="text-sm text-muted">
+            <label htmlFor="name" className={labelClass}>
               Name
             </label>
             <input
               type="text"
               name="name"
               id="name"
+              placeholder="Your Name"
               value={formData.name}
               onChange={handleChange}
               className={inputClass}
@@ -113,13 +134,14 @@ const Contact = () => {
             />
           </div>
           <div>
-            <label htmlFor="email" className="text-sm text-muted">
+            <label htmlFor="email" className={labelClass}>
               Email
             </label>
             <input
               type="email"
               name="email"
               id="email"
+              placeholder="email@example.com"
               value={formData.email}
               onChange={handleChange}
               className={inputClass}
@@ -127,15 +149,16 @@ const Contact = () => {
             />
           </div>
           <div>
-            <label htmlFor="message" className="text-sm text-muted">
+            <label htmlFor="message" className={labelClass}>
               Message
             </label>
             <textarea
               name="message"
               id="message"
+              rows="4"
+              placeholder="Tell me about your project…"
               value={formData.message}
               onChange={handleChange}
-              rows="4"
               className={`${inputClass} resize-none`}
               required
             />
@@ -143,21 +166,15 @@ const Contact = () => {
           <button
             type="submit"
             disabled={status === "sending"}
-            className="group inline-flex items-center justify-center gap-1.5 rounded-full bg-fg text-bg px-5 py-2.5 text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+            className="press mt-1 inline-flex items-center justify-center gap-2 bg-fg text-bg border border-border px-5 py-3.5 font-mono text-sm font-semibold uppercase tracking-[0.15em] shadow-hard disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {status === "sending" ? "Sending…" : "Send message"}
-            {status !== "sending" && (
-              <FiArrowUpRight
-                size={16}
-                className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"
-              />
-            )}
+            {status !== "sending" && <FiSend size={15} />}
           </button>
-
         </form>
       </div>
       <Toast status={status} />
-    </Section>
+    </section>
   );
 };
 
