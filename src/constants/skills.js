@@ -1,9 +1,6 @@
 import JavaScript from "../assets/skills/javascript.svg";
-import MongoDB from "../assets/skills/mongodb.svg";
-import MySQL from "../assets/skills/mysql.svg";
 import NextJS from "../assets/skills/nextjs.svg";
 import ExpressJS from "../assets/skills/nodejs.svg";
-import PostgreSQL from "../assets/skills/pgsql.svg";
 import Prisma from "../assets/skills/prisma.svg";
 import ReactJS from "../assets/skills/reactjs.svg";
 import TailwindCSS from "../assets/skills/tailwindcss.svg";
@@ -51,7 +48,10 @@ export const skillGroups = [
     label: "AI & Machine Learning",
     skills: [
       { name: "PyTorch", icon: PyTorch },
-      { name: "HuggingFace", icon: HuggingFace },
+      { name: "Hugging Face", icon: HuggingFace },
+      { name: "Transformers", text: true },
+      { name: "Fine-Tuning", text: true },
+      { name: "LoRA", text: true },
       { name: "LangChain", icon: LangChain },
       { name: "Agentic AI", icon: AI, darkInvert: true },
       { name: "RAG", icon: RAG, darkInvert: true },
@@ -76,14 +76,6 @@ export const skillGroups = [
       { name: "FastAPI", icon: FastAPI },
       { name: "Redis", icon: Redis },
       { name: "Prisma", icon: Prisma, darkBg: true, darkInvert: true },
-    ],
-  },
-  {
-    label: "Databases",
-    skills: [
-      { name: "PostgreSQL", icon: PostgreSQL },
-      { name: "MongoDB", icon: MongoDB },
-      { name: "MySQL", icon: MySQL },
     ],
   },
 ];

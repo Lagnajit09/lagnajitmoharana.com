@@ -31,7 +31,7 @@
   --subtle: 128 120 114;
   --accent: 255 122 71;
   --accent-deep: 255 138 92;
-  --shadow: 0 0 0;
+  --shadow: 245 240 236;    /* light cream so hard shadows read on dark bg */
 }
 
 * {

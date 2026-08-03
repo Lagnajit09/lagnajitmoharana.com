@@ -20,7 +20,7 @@ const socials = [
 
 function Header() {
   return (
-    <header className="pt-28 md:pt-36 pb-14 md:pb-20">
+    <header className="pt-24 md:pt-32 pb-14 md:pb-20">
       <div className="grid lg:grid-cols-[1fr_auto] items-center gap-10 lg:gap-16">
         {/* Left: intro */}
         <div className="animate-fade-up order-2 lg:order-1">
@@ -38,17 +38,20 @@ function Header() {
             Architecting
             <br />
             resilient systems for a{" "}
-            <span className="italic font-bold text-accent-deep">scalable</span>{" "}
+            <span className="italic font-bold text-accent-deep">
+              scalable
+            </span>{" "}
             future.
           </h1>
 
           <p className="mt-7 text-lg text-muted max-w-xl leading-relaxed">
-            Hey, I'm <span className="font-semibold text-fg">Lagnajit Moharana</span>.
+            Hey, I'm{" "}
+            <span className="font-semibold text-fg">Lagnajit Moharana</span>.
             Full-stack developer exploring the frontier of{" "}
             <span className="text-fg">AI &amp; Machine Learning</span>, with a
-            foundation in <span className="text-fg">Cloud Infrastructure</span> and{" "}
-            <span className="text-fg">DevOps</span>. App Development Analyst
-            @Accenture.
+            foundation in <span className="text-fg">Cloud Infrastructure</span>{" "}
+            and <span className="text-fg">DevOps</span>.
+            <br /> App Development Analyst | @Accenture.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">

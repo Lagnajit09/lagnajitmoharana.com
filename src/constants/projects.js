@@ -1,8 +1,25 @@
 export const projects = [
   {
+    id: "13",
+    year: "Aug, 2026",
+    title: "MiniGPT-v3: Fine-tuned SmolLM-135M with Full Alignment Pipeline",
+    link: "https://minigpt-v3.streamlit.app",
+    github: "https://github.com/Lagnajit09/100x_AI_ML/tree/main/minigpt-v3",
+    tech: [
+      "PyTorch",
+      "Transformers",
+      "Streamlit",
+      "SmolLM-135M",
+      "LoRA",
+      "SFT",
+      "DPO",
+      "GRPO",
+    ],
+  },
+  {
     id: "12",
-    year: "2026",
-    title: "MiniGPT-V2: A Miniature GPT Model for Text Generation",
+    year: "Jul, 2026",
+    title: "MiniGPT-v2: A Miniature GPT Model for Text Generation",
     link: "https://minigpt-v2.onrender.com/",
     github: "https://github.com/Lagnajit09/100x_AI_ML/tree/main/minigpt-v2",
     tech: [
@@ -18,7 +35,7 @@ export const projects = [
   },
   {
     id: "11",
-    year: "2026",
+    year: "Jun, 2026",
     title: "MiniGPT-Shakespeare: Trained GPT Model for Text Generation",
     link: "https://huggingface.co/spaces/m-lagnajit/minigpt-shakespeare",
     github:
@@ -54,9 +71,9 @@ export const projects = [
   },
   {
     id: "8",
-    year: "2025",
-    title: "SwiftPay - InfraOps",
-    link: "",
+    year: "2025 - 2026",
+    title: "SwiftPay-v2: Payment Application",
+    link: "https://swiftpayz.web.app/",
     github: "https://github.com/Lagnajit09/swiftpay-infraops",
     tech: [
       "NextJS",
@@ -66,13 +83,14 @@ export const projects = [
       "Prisma",
       "Microservices",
       "Docker",
+      "Kubernetes",
     ],
   },
   {
     id: "7",
     year: "2024 - 2025",
     title: "SwiftPay",
-    link: "https://swiftpaylm.vercel.app/",
+    link: "",
     github: "https://github.com/Lagnajit09/walletX",
     tech: ["NextJS", "ExpressJS", "PostgreSQL", "Tailwind CSS", "Prisma"],
   },
@@ -131,28 +149,71 @@ export const topProjects = [
       "AutoSage is an AI-driven infrastructure automation platform that streamlines and optimizes cloud operations through workflows, RAG and agentic AI, enabling users to manage and scale their infrastructure efficiently.",
   },
   {
-    title: "MiniGPT-V2: A Miniature GPT Model for Text Generation",
+    title: "SwiftPay: Payment Application",
+    link: "https://swiftpayz.web.app/",
+    github: "https://github.com/Lagnajit09/swiftpay-infraops",
+    tech: [
+      "ReactJS",
+      "ExpressJS",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "Prisma",
+      "Docker",
+      "Microservices",
+      "Kubernetes",
+    ],
+    description:
+      "SwiftPay is a demo payment application that allows users to send and receive money instantly, connect with friends, and manage their finances with ease. It is built with a modern tech stack and offers a seamless user experience.",
+  },
+];
+
+// MiniGPT — an evolving learning journey of building & aligning language models,
+// each version pushing further than the last (v1 → v2 → v3).
+export const mlProjects = [
+  {
+    version: "v1",
+    title: "MiniGPT-Shakespeare",
+    link: "https://huggingface.co/spaces/m-lagnajit/minigpt-shakespeare",
+    github:
+      "https://github.com/Lagnajit09/100x_AI_ML/tree/main/minigpt-model-hf",
+    tech: ["PyTorch", "Gradio", "HuggingFace", "Transformers & Attention"],
+    description:
+      "Where it started — a GPT-style transformer trained entirely from scratch in PyTorch on the works of Shakespeare, then deployed on HuggingFace Spaces with a Gradio interface for interactive text generation.",
+  },
+  {
+    version: "v2",
+    title: "MiniGPT-v2",
     link: "https://minigpt-v2.onrender.com/",
     github: "https://github.com/Lagnajit09/100x_AI_ML/tree/main/minigpt-v2",
     tech: [
       "PyTorch",
       "Gradio",
       "Transformers & Attention",
-      "RMSnorm",
+      "RMSNorm",
       "SwiGLU",
       "RoPE",
       "GQA",
       "BPE Tokenization",
     ],
     description:
-      "A GPT-style transformer built entirely from scratch in PyTorch, trained on the TinyStories dataset. It incorporates advanced techniques like RMSnorm, SwiGLU, RoPE, GQA, LR-Scheduling and BPE tokenization to enhance performance and efficiency in text generation tasks.",
+      "A GPT-style transformer built from scratch in PyTorch and trained on the TinyStories dataset. It layers in modern techniques — RMSNorm, SwiGLU, RoPE, GQA, LR scheduling and a hand-rolled BPE tokenizer — to improve quality and efficiency in text generation.",
   },
   {
-    title: "Swiftpay: Payment Application",
-    link: "https://swiftpaylm.vercel.app/",
-    github: "https://github.com/Lagnajit09/walletX",
-    tech: ["NextJS", "ExpressJS", "PostgreSQL", "Tailwind CSS", "Prisma"],
+    version: "v3",
+    title: "MiniGPT-v3",
+    link: "https://minigpt-v3.streamlit.app",
+    github: "https://github.com/Lagnajit09/100x_AI_ML/tree/main/minigpt-v3",
+    tech: [
+      "PyTorch",
+      "Transformers",
+      "Streamlit",
+      "SmolLM-135M",
+      "LoRA",
+      "SFT",
+      "DPO",
+      "GRPO",
+    ],
     description:
-      "SwiftPay is a demo payment application that allows users to send and receive money instantly, connect with friends, and manage their finances with ease. It is built with a modern tech stack and offers a seamless user experience.",
+      "A fine-tuned SmolLM-135M taken through a complete alignment pipeline — Continued Pre-Training (CPT) on WikiText, Supervised Fine-Tuning (SFT) on Alpaca, preference alignment via RLHF/DPO on Orca pairs, and RLVR with GRPO for verifiable arithmetic reasoning. Each stage is a stackable LoRA adapter, served on Streamlit.",
   },
 ];

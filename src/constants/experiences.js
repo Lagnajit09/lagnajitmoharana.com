@@ -3,7 +3,7 @@ import AccentureLogo from "../assets/experiences/accenture_logo.svg";
 export const experiences = [
   {
     id: "1",
-    designation: "Packaged App Development Analyst",
+    designation: "Packaged App Dev Analyst",
     company: "Accenture, India",
     startDate: "June 2026",
     endDate: "Present",
@@ -13,7 +13,7 @@ export const experiences = [
   },
   {
     id: "0",
-    designation: "Packaged App Development Associate",
+    designation: "Packaged App Dev Associate",
     company: "Accenture, India",
     startDate: "August 2024",
     endDate: "May 2026",
