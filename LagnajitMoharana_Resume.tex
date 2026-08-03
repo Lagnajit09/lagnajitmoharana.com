@@ -1,0 +1,203 @@
+%-------------------------
+% ATS-Optimized Resume — Lagnajit Moharana (One Page)
+%-------------------------
+
+\documentclass[letterpaper,10.5pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.55in}
+\addtolength{\textheight}{1.1in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
+
+% ATS parsability
+\pdfgentounicode=1
+
+%-----------CUSTOM COMMANDS-----------
+\newcommand{\resumeItem}[1]{
+  \item\small{{#1 \vspace{-1pt}}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-6pt}
+}
+
+% Single-line heading: title, company on the left; dates on the right
+\newcommand{\resumeSubheadingOneLine}[3]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1}, \textit{\small #2} & \textit{\small #3} \\
+    \end{tabular*}\vspace{-6pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-6pt}
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
+
+%===========================================
+%         RESUME STARTS HERE
+%===========================================
+
+\begin{document}
+
+%-----------HEADING-----------
+\begin{center}
+    \textbf{\Huge \scshape Lagnajit Moharana} \\ \vspace{3pt}
+    \small
+    Odisha, India $|$
+    \href{mailto:2004lagnajitmoharana@gmail.com}{\underline{2004lagnajitmoharana@gmail.com}} $|$
+    \href{https://www.linkedin.com/in/lagnajitmoharana2004/}{\underline{linkedin.com/in/lagnajitmoharana2004}} $|$
+    \href{https://github.com/Lagnajit09}{\underline{github.com/Lagnajit09}} $|$
+    \href{https://lagnajitmoharana.web.app/}{\underline{lagnajitmoharana.web.app}}
+\end{center}
+
+
+%-----------SUMMARY-----------
+\section{Summary}
+\small{Full-Stack Developer and AI Engineer with 2+ years at Accenture, specializing in cloud infrastructure automation, AI-driven systems, and enterprise full-stack development. Hands-on expertise in RAG pipelines, agentic AI, building and fine-tuning LLMs from scratch, and multi-cloud platforms (AWS, Azure, GCP). AWS and GCP certified.}
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheadingOneLine
+      {Packaged App Development Analyst}{Accenture, India}{June 2026 -- Present}
+      \resumeItemListStart
+        \resumeItem{Architect and deploy infrastructure automation platforms and ServiceNow workflows across enterprise client environments, improving operational efficiency and system uptime.}
+        \resumeItem{Design cloud automation solutions using Ansible, Terraform, and Python across AWS, Azure, and GCP to standardize deployments and accelerate DevOps pipelines.}
+        \resumeItem{Lead technical delivery of automation modules that reduce incident response time and streamline change management processes across multiple concurrent client engagements.}
+      \resumeItemListEnd
+
+    \resumeSubheadingOneLine
+      {Packaged App Development Associate}{Accenture, India}{August 2024 -- May 2026}
+      \resumeItemListStart
+        \resumeItem{Developed full-stack internal applications with Python, Django, ReactJS, and PostgreSQL; integrated Azure OpenAI APIs to automate repetitive cloud operations.}
+        \resumeItem{Containerized services with Docker and Kubernetes on Azure and maintained CI/CD pipelines; built RESTful APIs and microservices powering dashboards and automation across client projects.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, JavaScript, TypeScript, SQL} \\[1pt]
+     \textbf{Frontend}{: ReactJS, Next.js, Tailwind CSS, Redux} \\[1pt]
+     \textbf{Backend}{: Django, FastAPI, Express.js, Node.js, Redis, Celery, Prisma} \\[1pt]
+     \textbf{Databases}{: PostgreSQL, MongoDB, MySQL, Supabase VectorDB} \\[1pt]
+     \textbf{AI / ML}{: PyTorch, HuggingFace, Transformers, LLM Fine-Tuning \& Alignment, LoRA / PEFT, LangChain, RAG, Agentic AI} \\[1pt]
+     \textbf{Cloud \& DevOps}{: AWS, Azure, GCP, Docker, Kubernetes, Ansible, Terraform, CI/CD, GitOps, Cloudflare Workers}
+    }}
+ \end{itemize}
+
+
+%-----------FULL-STACK & INFRASTRUCTURE PROJECTS-----------
+\section{Full-Stack \& Infrastructure Projects}
+    \resumeSubHeadingListStart
+
+      \resumeProjectHeading
+          {\textbf{AutoSage: AI-Driven Infrastructure Automation Platform} $|$ \emph{Django, ReactJS, AI \& RAG, GCP, Docker} $|$ \href{https://autosagex.web.app/}{\underline{Demo}} $|$ \href{https://github.com/Lagnajit09/autosage}{\underline{GitHub}}}{2025--2026}
+          \resumeItemListStart
+            \resumeItem{Designed and shipped a production full-stack AI platform with RAG pipelines and agentic AI workflows to automate cloud infrastructure management; backend built with Django, Redis, and Celery; containerized on GCP with Supabase VectorDB.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{SwiftPay: Payment Platform with Microservices} $|$ \emph{Next.js, Express.js, PostgreSQL, Docker, Kubernetes} $|$ \href{https://swiftpayz.web.app/}{\underline{Demo}} $|$ \href{https://github.com/Lagnajit09/swiftpay-infraops}{\underline{GitHub}}}{2024--2025}
+          \resumeItemListStart
+            \resumeItem{Built a real-time P2P payment application (Next.js, Express.js, PostgreSQL, Prisma) and a separate containerized microservices infrastructure with Docker and Kubernetes for scalable, fault-tolerant deployment.}
+          \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+
+
+%-----------AI & MACHINE LEARNING PROJECTS-----------
+\section{AI \& Machine Learning Projects}
+    \resumeSubHeadingListStart
+
+      \resumeProjectHeading
+          {\textbf{MiniGPT-v3: LLM Post-Training \& Alignment Pipeline} $|$ \emph{PyTorch, SmolLM-135M, LoRA, Fine-Tuning} $|$ \href{https://minigpt-v3.streamlit.app}{\underline{Demo}} $|$ \href{https://github.com/Lagnajit09/100x_AI_ML/tree/main/minigpt-v3}{\underline{GitHub}}}{2026}
+          \resumeItemListStart
+            \resumeItem{Fine-tuned SmolLM-135M through a complete post-training pipeline --- Continued Pre-Training (WikiText), Supervised Fine-Tuning (Alpaca), DPO preference alignment (Orca), and RLVR with GRPO for verifiable arithmetic; implemented each stage as a stackable LoRA adapter and deployed on Streamlit.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{MiniGPT (v1 $\rightarrow$ v2): GPT-Style Transformer from Scratch} $|$ \emph{PyTorch, HuggingFace, Gradio} $|$ \href{https://minigpt-v2.onrender.com/}{\underline{Demo}} $|$ \href{https://github.com/Lagnajit09/100x_AI_ML/tree/main/minigpt-v2}{\underline{GitHub}}}{2026}
+          \resumeItemListStart
+            \resumeItem{Built GPT-style autoregressive transformers from scratch in PyTorch --- progressing from a Shakespeare-trained model (v1) to a 6.8M-parameter model (v2) with RMSNorm, SwiGLU, RoPE, GQA, and a custom BPE tokenizer; trained on TinyStories and deployed on Render and HuggingFace Spaces.}
+          \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+
+
+%-----------CERTIFICATIONS-----------
+\section{Certifications}
+  \vspace{2pt}
+  {\small
+  \begin{tabular*}{0.97\textwidth}{@{}p{0.47\textwidth}@{\extracolsep{\fill}}p{0.47\textwidth}@{}}
+    \textbf{AWS Certified Cloud Practitioner} & \textbf{Google Cloud Associate Cloud Engineer} \\
+    Amazon Web Services \textit{(Dec 2024 -- Dec 2027)} & Google Cloud Platform \textit{(Jan 2026 -- Jan 2029)} \\
+  \end{tabular*}}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Ravenshaw University}{Cuttack, Odisha, India}
+      {B.Sc. in Information Technology \& Management $|$ \textbf{Grade: 87.13\%}}{2021 -- 2024}
+      \resumeItemListStart
+        \resumeItem{Relevant Coursework: Data Structures \& Algorithms, Database Management Systems, Web Technologies, Cloud Computing, Software Engineering}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+
+%-------------------------------------------
+\end{document}
