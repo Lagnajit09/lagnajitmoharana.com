@@ -1,7 +1,42 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiArrowLeft, FiArrowUpRight } from "react-icons/fi";
+import { Helmet } from "react-helmet-async";
 import { blogs } from "../constants/blogs";
+
+const BASE = "https://lagnajitmoharana.web.app";
+
+const blogsSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${BASE}/blogs#webpage`,
+      "url": `${BASE}/blogs`,
+      "name": "Writing — Lagnajit Moharana",
+      "description":
+        "Threads, deep dives, and write-ups by Lagnajit Moharana on transformers, LLM training, Docker containerization, and building AI-powered platforms.",
+      "isPartOf": { "@id": `${BASE}/#website` },
+      "about": { "@id": `${BASE}/#person` },
+    },
+    {
+      "@type": "Blog",
+      "@id": `${BASE}/blogs#blog`,
+      "name": "Threads & Thoughts by Lagnajit Moharana",
+      "url": `${BASE}/blogs`,
+      "author": { "@id": `${BASE}/#person` },
+      "blogPost": blogs.map((b) => ({
+        "@type": "BlogPosting",
+        "headline": b.name,
+        "description": b.description,
+        "url": b.link,
+        "author": { "@id": `${BASE}/#person` },
+        "publisher": { "@id": `${BASE}/#person` },
+        "image": `${BASE}/og-image.png`,
+      })),
+    },
+  ],
+});
 
 const Blogs = () => {
   const navigate = useNavigate();
@@ -58,73 +93,110 @@ const Blogs = () => {
   }, []);
 
   return (
-    <div className="max-w-6xl mx-auto px-5 sm:px-8 pt-28 md:pt-36 pb-24 min-h-screen">
-      <button
-        onClick={() => navigate("/")}
-        className="group inline-flex items-center gap-2 font-mono text-sm uppercase tracking-wide text-muted hover:text-fg transition-colors mb-10"
-      >
-        <FiArrowLeft
-          size={16}
-          className="group-hover:-translate-x-1 transition-transform"
+    <>
+      <Helmet>
+        <title>Writing — Lagnajit Moharana</title>
+        <meta
+          name="description"
+          content="Threads, deep dives, and write-ups by Lagnajit Moharana — building GPT from scratch, training transformers, Docker containerization, and the AutoSage AI platform."
         />
-        Back home
-      </button>
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={`${BASE}/blogs`} />
 
-      <div className="mb-16">
-        <span className="eyebrow">Writing</span>
-        <h1 className="font-display font-black text-4xl sm:text-5xl md:text-6xl tracking-tight text-fg mt-4">
-          Threads &amp; thoughts
-        </h1>
-        <p className="text-muted mt-4 max-w-xl text-lg leading-relaxed">
-          Deep dives, project write-ups, and articles from things I've learned —
-          scroll to follow the thread.
-        </p>
-      </div>
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${BASE}/blogs`} />
+        <meta property="og:title" content="Writing — Lagnajit Moharana" />
+        <meta
+          property="og:description"
+          content="Deep dives and project write-ups: building MiniGPT from scratch, how transformers learn, Docker containerization, and introducing AutoSage."
+        />
+        <meta property="og:image" content={`${BASE}/og-image.png`} />
+        <meta property="og:image:alt" content="Writing — Lagnajit Moharana" />
+        <meta property="og:site_name" content="Lagnajit Moharana" />
+        <meta property="og:locale" content="en_US" />
 
-      <div ref={containerRef} className="relative">
-        {/* Vertical timeline track */}
-        <div
-          className="absolute left-[7px] top-2 bottom-2 w-0.5 bg-border-soft"
-          aria-hidden="true"
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@m_lagnajit09" />
+        <meta name="twitter:creator" content="@m_lagnajit09" />
+        <meta name="twitter:title" content="Writing — Lagnajit Moharana" />
+        <meta
+          name="twitter:description"
+          content="Threads and deep dives: GPT from scratch, transformers, Docker, and AI platform write-ups."
+        />
+        <meta name="twitter:image" content={`${BASE}/og-image.png`} />
+        <meta name="twitter:image:alt" content="Writing — Lagnajit Moharana" />
+
+        <script type="application/ld+json">{blogsSchema}</script>
+      </Helmet>
+
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 pt-28 md:pt-36 pb-24 min-h-screen">
+        <button
+          onClick={() => navigate("/")}
+          className="group inline-flex items-center gap-2 font-mono text-sm uppercase tracking-wide text-muted hover:text-fg transition-colors mb-10"
         >
-          <div
-            className="absolute left-0 top-0 w-full bg-accent origin-top transition-[height] duration-150 ease-out"
-            style={{ height: `${progress * 100}%` }}
+          <FiArrowLeft
+            size={16}
+            className="group-hover:-translate-x-1 transition-transform"
           />
+          Back home
+        </button>
+
+        <div className="mb-16">
+          <span className="eyebrow">Writing</span>
+          <h1 className="font-display font-black text-4xl sm:text-5xl md:text-6xl tracking-tight text-fg mt-4">
+            Threads &amp; thoughts
+          </h1>
+          <p className="text-muted mt-4 max-w-xl text-lg leading-relaxed">
+            Deep dives, project write-ups, and articles from things I've learned —
+            scroll to follow the thread.
+          </p>
         </div>
 
-        <ol className="flex flex-col gap-14 sm:gap-20">
-          {blogs.map((blog, index) => {
-            const isActive = index === active;
-            const isPassed = index < active;
-            return (
-              <li
-                key={index}
-                ref={(el) => (threadRefs.current[index] = el)}
-                className="relative pl-10 sm:pl-14"
-              >
-                <span
-                  className="absolute left-0 top-1.5 flex items-center justify-center"
-                  aria-hidden="true"
+        <div ref={containerRef} className="relative">
+          {/* Vertical timeline track */}
+          <div
+            className="absolute left-[7px] top-2 bottom-2 w-0.5 bg-border-soft"
+            aria-hidden="true"
+          >
+            <div
+              className="absolute left-0 top-0 w-full bg-accent origin-top transition-[height] duration-150 ease-out"
+              style={{ height: `${progress * 100}%` }}
+            />
+          </div>
+
+          <ol className="flex flex-col gap-14 sm:gap-20">
+            {blogs.map((blog, index) => {
+              const isActive = index === active;
+              const isPassed = index < active;
+              return (
+                <li
+                  key={index}
+                  ref={(el) => (threadRefs.current[index] = el)}
+                  className="relative pl-10 sm:pl-14"
                 >
                   <span
-                    className={`block transition-all duration-300 ${
-                      isActive
-                        ? "w-4 h-4 bg-accent ring-4 ring-accent/20"
-                        : isPassed
-                          ? "w-3.5 h-3.5 bg-accent"
-                          : "w-3.5 h-3.5 bg-bg border-2 border-border-soft"
-                    }`}
-                  />
-                </span>
+                    className="absolute left-0 top-1.5 flex items-center justify-center"
+                    aria-hidden="true"
+                  >
+                    <span
+                      className={`block transition-all duration-300 ${
+                        isActive
+                          ? "w-4 h-4 bg-accent ring-4 ring-accent/20"
+                          : isPassed
+                            ? "w-3.5 h-3.5 bg-accent"
+                            : "w-3.5 h-3.5 bg-bg border-2 border-border-soft"
+                      }`}
+                    />
+                  </span>
 
-                <ThreadCard blog={blog} isActive={isActive} index={index} />
-              </li>
-            );
-          })}
-        </ol>
+                  <ThreadCard blog={blog} isActive={isActive} index={index} />
+                </li>
+              );
+            })}
+          </ol>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

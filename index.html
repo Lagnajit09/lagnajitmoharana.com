@@ -4,113 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- ── Primary SEO ─────────────────────────────────────────────────── -->
-    <title>Lagnajit Moharana — Full-Stack Developer & AI Engineer</title>
-    <meta
-      name="description"
-      content="Lagnajit Moharana is a full-stack developer and AI engineer specialising in cloud infrastructure, DevOps, and machine learning. App Development Associate at Accenture."
-    />
-    <meta
-      name="keywords"
-      content="Lagnajit Moharana, full-stack developer, AI engineer, cloud infrastructure, DevOps, machine learning, React, Next.js, Python, AWS, GCP, LLM, RAG, portfolio"
-    />
-    <meta name="author" content="Lagnajit Moharana" />
-    <link rel="canonical" href="https://lagnajitmoharana.web.app/" />
-
-    <!-- ── Open Graph (Facebook, LinkedIn, WhatsApp, Slack…) ───────────── -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://lagnajitmoharana.web.app/" />
-    <meta
-      property="og:title"
-      content="Lagnajit Moharana — Full-Stack Developer & AI Engineer"
-    />
-    <meta
-      property="og:description"
-      content="Full-stack developer exploring AI & machine learning, with a foundation in cloud infrastructure and DevOps. App Development Associate at Accenture."
-    />
-    <meta
-      property="og:image"
-      content="https://lagnajitmoharana.web.app/og-image.png"
-    />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content="Lagnajit Moharana — Full-Stack Developer & AI Engineer"
-    />
-    <meta property="og:site_name" content="Lagnajit Moharana" />
-    <meta property="og:locale" content="en_US" />
-
-    <!-- ── Twitter / X Card ────────────────────────────────────────────── -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@m_lagnajit09" />
-    <meta name="twitter:creator" content="@m_lagnajit09" />
-    <meta
-      name="twitter:title"
-      content="Lagnajit Moharana — Full-Stack Developer & AI Engineer"
-    />
-    <meta
-      name="twitter:description"
-      content="Full-stack developer exploring AI & machine learning, with a foundation in cloud infrastructure and DevOps. App Development Analyst at Accenture."
-    />
-    <meta
-      name="twitter:image"
-      content="https://lagnajitmoharana.web.app/og-image.png"
-    />
-    <meta
-      name="twitter:image:alt"
-      content="Lagnajit Moharana — Full-Stack Developer & AI Engineer"
-    />
-
     <!-- ── Favicon ──────────────────────────────────────────────────────── -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <!-- Fallback PNG favicon — add a /favicon.ico or /favicon-32.png to public/ if needed -->
 
-    <!-- ── Theme & app meta ─────────────────────────────────────────────── -->
+    <!-- ── App / theme meta (global, not per-route) ──────────────────────── -->
     <meta name="theme-color" content="#0a0a0b" />
     <meta name="color-scheme" content="dark light" />
-    <meta name="robots" content="index, follow" />
 
-    <!-- ── Structured data (JSON-LD Person schema) ──────────────────────── -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Lagnajit Moharana",
-        "url": "https://lagnajitmoharana.web.app/",
-        "image": "https://lagnajitmoharana.web.app/og-image.png",
-        "jobTitle": "App Development Associate",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Accenture"
-        },
-        "alumniOf": {
-          "@type": "CollegeOrUniversity",
-          "name": "Ravenshaw University"
-        },
-        "sameAs": [
-          "https://github.com/Lagnajit09",
-          "https://www.linkedin.com/in/lagnajitmoharana2004/",
-          "https://x.com/m_lagnajit09",
-          "https://www.instagram.com/sketchify99/"
-        ],
-        "knowsAbout": [
-          "Full-Stack Development",
-          "Cloud Infrastructure",
-          "DevOps",
-          "Machine Learning",
-          "Large Language Models",
-          "RAG Pipelines",
-          "Agentic AI",
-          "React",
-          "Next.js",
-          "Python",
-          "AWS",
-          "Google Cloud Platform"
-        ]
-      }
-    </script>
+    <!-- ── Per-route: title, description, OG, Twitter, JSON-LD ────────────
+         Injected here by Vite SSR pre-render (prerender.mjs).
+         Falls back to react-helmet-async on the client for SPA navigation.
+    ─────────────────────────────────────────────────────────────────────── -->
+    <!--ssr-head-->
 
     <!-- ── No-flash theme init ──────────────────────────────────────────── -->
     <script>
@@ -127,7 +32,7 @@
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><!--ssr-body--></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
