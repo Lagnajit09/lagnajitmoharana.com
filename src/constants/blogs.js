@@ -2,9 +2,17 @@ import DockerBlog from "../assets/blogs/docker.png";
 import XArticle1 from "../assets/blogs/x_post_1.webp";
 import XArticle2 from "../assets/blogs/x_post_2.jpg";
 import XArticle3 from "../assets/blogs/x_post_3.png";
+import XArticle4 from "../assets/blogs/x_post_4.png";
 import Autosage from "../assets/blogs/autosage.png";
 
 export const blogs = [
+  {
+    name: "From Text to Nodes: How AI Engineering Is Evolving",
+    link: "https://x.com/m_lagnajit09/status/2094334032066777120?s=20",
+    image: XArticle4,
+    description:
+      "From prompt engineering and context engineering to harnesses, loops, and graphs — the unit of AI engineering is gradually moving from the model to the system around it.",
+  },
   {
     name: "Coherent Isn't the Same as Correct: What I Learned Building a GPT From Scratch",
     link: "https://x.com/m_lagnajit09/status/2075518911228051771?s=20",
