@@ -1,59 +1,9 @@
-export const projects = [
+// ── Featured — flagship / best work (rendered as rich cards on /projects) ──
+export const featuredProjects = [
   {
-    id: "13",
-    year: "Aug, 2026",
-    title: "MiniGPT-v3: Fine-tuned SmolLM-135M with Full Alignment Pipeline",
-    link: "https://minigpt-v3.streamlit.app",
-    github: "https://github.com/Lagnajit09/100x_AI_ML/tree/main/minigpt-v3",
-    tech: [
-      "PyTorch",
-      "Transformers",
-      "Streamlit",
-      "SmolLM-135M",
-      "LoRA",
-      "SFT",
-      "DPO",
-      "GRPO",
-    ],
-  },
-  {
-    id: "12",
-    year: "Jul, 2026",
-    title: "MiniGPT-v2: A Miniature GPT Model for Text Generation",
-    link: "https://minigpt-v2.onrender.com/",
-    github: "https://github.com/Lagnajit09/100x_AI_ML/tree/main/minigpt-v2",
-    tech: [
-      "PyTorch",
-      "Gradio",
-      "Transformers & Attention",
-      "RMSnorm",
-      "SwiGLU",
-      "RoPE",
-      "GQA",
-      "BPE Tokenization",
-    ],
-  },
-  {
-    id: "11",
-    year: "Jun, 2026",
-    title: "MiniGPT-Shakespeare: Trained GPT Model for Text Generation",
-    link: "https://huggingface.co/spaces/m-lagnajit/minigpt-shakespeare",
-    github:
-      "https://github.com/Lagnajit09/100x_AI_ML/tree/main/minigpt-model-hf",
-    tech: ["PyTorch", "Gradio", "HuggingFace", "Transformers & Attention"],
-  },
-  {
-    id: "10",
+    id: "autosage",
     year: "2025 - 2026",
-    title: "AutoSage Docs",
-    link: "https://autosagexdocs.web.app/",
-    github: "https://github.com/Lagnajit09/autosage-docs",
-    tech: ["Docusaurus", "Django", "RAG", "Supabase - VectorDB"],
-  },
-  {
-    id: "9",
-    year: "2025 - 2026",
-    title: "AutoSage: Infrastructure Automation Platform",
+    title: "AutoSage",
     link: "https://autosagex.web.app/",
     github: "https://github.com/Lagnajit09/autosage",
     tech: [
@@ -62,13 +12,40 @@ export const projects = [
       "Redis",
       "Celery",
       "GCP",
-      "Tailwind CSS",
-      "RAG",
       "Agentic AI",
+      "RAG",
       "Supabase",
       "Docker",
+      "Tailwind CSS",
     ],
+    description:
+      "A production full-stack AI platform that automates cloud infrastructure management through RAG pipelines and agentic AI workflows. The Django backend orchestrates long-running jobs with Redis and Celery, is containerized on GCP, and uses Supabase as the vector store.",
   },
+  {
+    id: "sagex-cli",
+    year: "Aug, 2026",
+    title: "SageX (CLI)",
+    status: "In progress",
+    link: "",
+    github: "https://github.com/Lagnajit09/sagex",
+    tech: ["Python", "CLI", "AutoSage API", "Agentic AI", "RAG"],
+    description:
+      "The command-line companion to AutoSage — bringing infrastructure automation, RAG-powered queries and agentic workflows straight to the terminal, so you can provision, inspect and manage cloud resources without leaving the shell. Actively in development since August 2026.",
+  },
+  {
+    id: "autosage-docs",
+    year: "2025 - 2026",
+    title: "AutoSage Docs",
+    link: "https://autosagexdocs.web.app/",
+    github: "https://github.com/Lagnajit09/autosage-docs",
+    tech: ["Docusaurus", "Django", "RAG", "Supabase - VectorDB"],
+    description:
+      "The documentation hub for AutoSage, built on Docusaurus and backed by a Django-powered RAG assistant over a Supabase vector database — letting users ask questions in natural language and get grounded answers sourced straight from the docs.",
+  },
+];
+
+// ── Additionals — everything else (rendered as a compact list on /projects) ──
+export const additionalProjects = [
   {
     id: "8",
     year: "2025 - 2026",
@@ -172,6 +149,7 @@ export const topProjects = [
 export const mlProjects = [
   {
     version: "v1",
+    year: "Jun, 2026",
     title: "MiniGPT-Shakespeare",
     link: "https://huggingface.co/spaces/m-lagnajit/minigpt-shakespeare",
     github:
@@ -182,6 +160,7 @@ export const mlProjects = [
   },
   {
     version: "v2",
+    year: "Jul, 2026",
     title: "MiniGPT-v2",
     link: "https://minigpt-v2.onrender.com/",
     github: "https://github.com/Lagnajit09/100x_AI_ML/tree/main/minigpt-v2",
@@ -200,6 +179,7 @@ export const mlProjects = [
   },
   {
     version: "v3",
+    year: "Aug, 2026",
     title: "MiniGPT-v3",
     link: "https://minigpt-v3.streamlit.app",
     github: "https://github.com/Lagnajit09/100x_AI_ML/tree/main/minigpt-v3",

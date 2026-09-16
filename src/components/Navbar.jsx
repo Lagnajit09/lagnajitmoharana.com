@@ -7,7 +7,7 @@ const links = [
   { label: "About", target: "about", type: "section" },
   { label: "Work", target: "experience", type: "section" },
   { label: "Stack", target: "skills", type: "section" },
-  { label: "Projects", target: "projects", type: "section" },
+  { label: "Projects", target: "/projects", type: "route" },
   { label: "Writing", target: "/blogs", type: "route" },
 ];
 
