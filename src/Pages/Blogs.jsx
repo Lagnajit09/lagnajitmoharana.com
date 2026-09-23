@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FiArrowLeft, FiArrowUpRight } from "react-icons/fi";
+import { FiArrowLeft, FiArrowUpRight, FiClock, FiCalendar } from "react-icons/fi";
 import { Helmet } from "react-helmet-async";
 import { blogs } from "../constants/blogs";
+import { getAllPosts, formatDate } from "../lib/posts";
+
+const posts = getAllPosts();
 
 const BASE = "https://lagnajitmoharana.web.app";
 
@@ -144,13 +147,27 @@ const Blogs = () => {
         <div className="mb-16">
           <span className="eyebrow">Writing</span>
           <h1 className="font-display font-black text-4xl sm:text-5xl md:text-6xl tracking-tight text-fg mt-4">
-            Threads &amp; thoughts
+            Deep dives &amp; threads
           </h1>
           <p className="text-muted mt-4 max-w-xl text-lg leading-relaxed">
-            Deep dives, project write-ups, and articles from things I've learned —
-            scroll to follow the thread.
+            Long-form write-ups and threads on AI, infrastructure, and the systems
+            I build — read right here, no login, no paywall.
           </p>
         </div>
+
+        {/* ── Self-hosted long-form posts ─────────────────────────────── */}
+        {posts.length > 0 && (
+          <section className="mb-20">
+            <SectionLabel index="01" title="Deep dives" />
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {posts.map((post) => (
+                <PostCard key={post.slug} post={post} navigate={navigate} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        <SectionLabel index="02" title="Threads" />
 
         <div ref={containerRef} className="relative">
           {/* Vertical timeline track */}
@@ -199,6 +216,58 @@ const Blogs = () => {
     </>
   );
 };
+
+const SectionLabel = ({ index, title }) => (
+  <div className="flex items-center gap-3 mb-7">
+    <span className="font-mono text-xs font-semibold text-accent-deep tabular-nums">
+      {index}
+    </span>
+    <span className="h-px w-8 bg-border-soft" />
+    <h2 className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-fg">
+      {title}
+    </h2>
+  </div>
+);
+
+const PostCard = ({ post, navigate }) => (
+  <a
+    href={`/${post.slug}`}
+    onClick={(e) => {
+      e.preventDefault();
+      navigate(`/${post.slug}`);
+    }}
+    className="group flex flex-col border border-border-soft hover:border-border hover:bg-surface hover:shadow-hard-lg hover:-translate-x-1 hover:-translate-y-1 transition-all duration-300"
+  >
+    {post.cover && (
+      <div className="overflow-hidden border-b border-border-soft aspect-[16/10]">
+        <img
+          src={post.cover}
+          alt={post.title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+      </div>
+    )}
+    <div className="flex flex-col flex-1 p-5">
+      <span className="eyebrow">{post.category}</span>
+      <h3 className="font-display font-bold text-xl text-fg group-hover:text-accent-deep transition-colors leading-snug mt-2.5">
+        {post.title}
+      </h3>
+      <p className="text-sm text-muted mt-2.5 leading-relaxed line-clamp-3 flex-1">
+        {post.description}
+      </p>
+      <div className="flex items-center gap-4 mt-4 pt-4 border-t border-border-soft font-mono text-[0.7rem] uppercase tracking-wider text-subtle">
+        {post.date && (
+          <span className="inline-flex items-center gap-1.5">
+            <FiCalendar size={12} /> {formatDate(post.date)}
+          </span>
+        )}
+        <span className="inline-flex items-center gap-1.5">
+          <FiClock size={12} /> {post.readingTime} min
+        </span>
+      </div>
+    </div>
+  </a>
+);
 
 const ThreadCard = ({ blog, isActive, index }) => (
   <a

@@ -13,13 +13,26 @@
  *   dist/blogs/index.html      ← /blogs HTML
  */
 
-import { readFileSync, writeFileSync, mkdirSync } from 'fs'
+import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-const routes = ['/', '/projects', '/blogs']
+// Discover self-hosted blog posts: each folder in src/content/posts/ is a
+// route at /<folder-name>, so every post gets its own static HTML file.
+function discoverPostRoutes() {
+  try {
+    const dir = resolve(__dirname, 'src/content/posts')
+    return readdirSync(dir, { withFileTypes: true })
+      .filter((e) => e.isDirectory())
+      .map((e) => `/${e.name}`)
+  } catch {
+    return []
+  }
+}
+
+const routes = ['/', '/projects', '/blogs', ...discoverPostRoutes()]
 
 async function prerender() {
   const template = readFileSync(resolve(__dirname, 'dist/index.html'), 'utf-8')
