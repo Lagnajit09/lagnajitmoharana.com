@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 726" width="900" height="726" font-family="'JetBrains Mono', ui-monospace, monospace" role="img" aria-label="AutoSage system architecture — three planes plus the AI service">
+  <rect x="1" y="1" width="898" height="724" rx="10" fill="#ffffff" stroke="#141313" stroke-width="2"/>
+
+  <text x="28" y="40" font-size="15" font-weight="700" fill="#141313">AutoSage — system architecture</text>
+  <line x1="28" y1="52" x2="872" y2="52" stroke="#d6d0cc" stroke-width="1.5"/>
+
+  <defs>
+    <marker id="a" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#141313"/>
+    </marker>
+    <marker id="ao" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#c84216"/>
+    </marker>
+  </defs>
+
+  <!-- Clients -->
+  <rect x="40" y="76" width="390" height="64" rx="6" fill="#fcf9f8" stroke="#141313" stroke-width="2"/>
+  <text x="235" y="103" font-size="13" font-weight="700" text-anchor="middle" fill="#141313">Browser · React SPA</text>
+  <text x="235" y="124" font-size="11" text-anchor="middle" fill="#4a4644">Firebase Hosting · live log consumer</text>
+
+  <rect x="470" y="76" width="390" height="64" rx="6" fill="#fcf9f8" stroke="#141313" stroke-width="2"/>
+  <text x="665" y="103" font-size="13" font-weight="700" text-anchor="middle" fill="#141313">Docs site · Docusaurus</text>
+  <text x="665" y="124" font-size="11" text-anchor="middle" fill="#4a4644">public Ask Autobot panel</text>
+
+  <!-- nginx -->
+  <rect x="40" y="172" width="820" height="56" rx="6" fill="#fff3ee" stroke="#c84216" stroke-width="2"/>
+  <text x="450" y="196" font-size="13" font-weight="700" text-anchor="middle" fill="#c84216">nginx — TLS termination</text>
+  <text x="450" y="216" font-size="11" text-anchor="middle" fill="#4a4644">/api/* → Django · /api/ai/* → Autobot · streaming unbuffered</text>
+
+  <!-- Control plane -->
+  <rect x="40" y="256" width="820" height="194" rx="6" fill="#ede9e6" stroke="#141313" stroke-width="1.5"/>
+  <text x="56" y="278" font-size="11" font-weight="700" fill="#141313">CONTROL PLANE</text>
+  <text x="844" y="278" font-size="10" text-anchor="end" fill="#4a4644">OCI Ampere A1 · docker compose</text>
+
+  <rect x="60" y="294" width="380" height="66" rx="6" fill="#fcf9f8" stroke="#141313" stroke-width="2"/>
+  <text x="250" y="317" font-size="13" font-weight="700" text-anchor="middle" fill="#141313">Django · Uvicorn (ASGI)</text>
+  <text x="250" y="336" font-size="11" text-anchor="middle" fill="#4a4644">REST API · JWT verify · SSE relay</text>
+  <text x="250" y="352" font-size="11" text-anchor="middle" fill="#4a4644">enqueue_workflow_run()</text>
+
+  <rect x="460" y="294" width="380" height="66" rx="6" fill="#fcf9f8" stroke="#141313" stroke-width="2"/>
+  <text x="650" y="317" font-size="13" font-weight="700" text-anchor="middle" fill="#141313">Autobot · FastAPI</text>
+  <text x="650" y="336" font-size="11" text-anchor="middle" fill="#4a4644">chat · tools · BYO keys · docs RAG</text>
+  <text x="650" y="352" font-size="11" text-anchor="middle" fill="#4a4644">owns no data of its own</text>
+
+  <rect x="60" y="376" width="240" height="60" rx="6" fill="#fcf9f8" stroke="#141313" stroke-width="2"/>
+  <text x="180" y="399" font-size="12" font-weight="700" text-anchor="middle" fill="#141313">Celery worker</text>
+  <text x="180" y="418" font-size="11" text-anchor="middle" fill="#4a4644">execute_workflow</text>
+
+  <rect x="320" y="376" width="180" height="60" rx="6" fill="#fcf9f8" stroke="#141313" stroke-width="2"/>
+  <text x="410" y="399" font-size="12" font-weight="700" text-anchor="middle" fill="#141313">Celery Beat</text>
+  <text x="410" y="418" font-size="11" text-anchor="middle" fill="#4a4644">cron dispatcher</text>
+
+  <rect x="520" y="376" width="320" height="60" rx="6" fill="#fcf9f8" stroke="#141313" stroke-width="2"/>
+  <text x="680" y="399" font-size="12" font-weight="700" text-anchor="middle" fill="#141313">Scheduler worker</text>
+  <text x="680" y="418" font-size="11" text-anchor="middle" fill="#4a4644">own queue, never blocked</text>
+
+  <!-- Execution plane -->
+  <rect x="40" y="476" width="820" height="122" rx="6" fill="#ede9e6" stroke="#141313" stroke-width="1.5"/>
+  <text x="56" y="498" font-size="11" font-weight="700" fill="#141313">EXECUTION PLANE</text>
+  <text x="844" y="498" font-size="10" text-anchor="end" fill="#4a4644">Google Cloud Run</text>
+
+  <rect x="60" y="512" width="380" height="70" rx="6" fill="#fff3ee" stroke="#c84216" stroke-width="2"/>
+  <text x="250" y="536" font-size="13" font-weight="700" text-anchor="middle" fill="#c84216">exec-worker · FastAPI</text>
+  <text x="250" y="555" font-size="11" text-anchor="middle" fill="#4a4644">scales 0 to 2 · IAM-locked</text>
+  <text x="250" y="572" font-size="11" text-anchor="middle" fill="#4a4644">streams output back as NDJSON</text>
+
+  <rect x="460" y="512" width="380" height="70" rx="6" fill="#fcf9f8" stroke="#141313" stroke-width="2"/>
+  <text x="650" y="536" font-size="13" font-weight="700" text-anchor="middle" fill="#141313">Your servers</text>
+  <text x="650" y="555" font-size="11" text-anchor="middle" fill="#4a4644">Linux via SSH · Windows via WinRM</text>
+  <text x="650" y="572" font-size="11" text-anchor="middle" fill="#4a4644">one Action node, one machine</text>
+
+  <!-- Managed services -->
+  <rect x="40" y="622" width="820" height="56" rx="6" fill="#ede9e6" stroke="#141313" stroke-width="1.5"/>
+  <text x="450" y="645" font-size="12" font-weight="700" text-anchor="middle" fill="#141313">Managed services</text>
+  <text x="450" y="665" font-size="11" text-anchor="middle" fill="#4a4644">Clerk · Supabase Postgres · Upstash Redis · Cloud Storage · LLM providers</text>
+
+  <!-- Arrows -->
+  <line x1="235" y1="140" x2="235" y2="168" stroke="#141313" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="665" y1="140" x2="665" y2="168" stroke="#141313" stroke-width="2" marker-end="url(#a)"/>
+
+  <line x1="250" y1="228" x2="250" y2="290" stroke="#141313" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="650" y1="228" x2="650" y2="290" stroke="#141313" stroke-width="2" marker-end="url(#a)"/>
+
+  <line x1="460" y1="327" x2="444" y2="327" stroke="#c84216" stroke-width="2" marker-end="url(#ao)"/>
+
+  <line x1="180" y1="360" x2="180" y2="372" stroke="#141313" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="500" y1="406" x2="516" y2="406" stroke="#141313" stroke-width="2" marker-end="url(#a)"/>
+
+  <line x1="180" y1="436" x2="180" y2="508" stroke="#141313" stroke-width="2" marker-end="url(#a)"/>
+  <text x="192" y="468" font-size="10" fill="#4a4644">one request per node</text>
+
+  <line x1="440" y1="547" x2="456" y2="547" stroke="#141313" stroke-width="2" marker-end="url(#a)"/>
+
+  <text x="28" y="692" font-size="10" fill="#c84216"><tspan font-weight="700">Orange arrow:</tspan> Autobot calls Django with your JWT forwarded — it never elevates its own privileges.</text>
+  <text x="28" y="708" font-size="10" fill="#4a4644"><tspan font-weight="700">Live logs:</tspan> exec-worker → Celery → Redis Pub/Sub → Django (SSE) → browser, line by line.</text>
+</svg>

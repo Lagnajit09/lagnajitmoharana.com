@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 400" width="820" height="400" font-family="'JetBrains Mono', ui-monospace, monospace" role="img" aria-label="Key Vault — servers and credentials, encrypted at rest">
+  <rect x="1" y="1" width="818" height="398" rx="10" fill="#ffffff" stroke="#141313" stroke-width="2"/>
+
+  <text x="28" y="40" font-size="15" font-weight="700" fill="#141313">Key Vault — saved once, reused everywhere</text>
+  <line x1="28" y1="52" x2="792" y2="52" stroke="#d6d0cc" stroke-width="1.5"/>
+
+  <defs>
+    <marker id="ao" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#c84216"/>
+    </marker>
+  </defs>
+
+  <rect x="40" y="76" width="740" height="188" rx="6" fill="#ede9e6" stroke="#141313" stroke-width="1.5"/>
+  <text x="56" y="99" font-size="11" font-weight="700" fill="#141313">VAULT</text>
+  <text x="764" y="99" font-size="10" text-anchor="end" fill="#4a4644">one per environment — e.g. dev-env, prod-env</text>
+
+  <rect x="66" y="114" width="330" height="132" rx="6" fill="#fcf9f8" stroke="#141313" stroke-width="2"/>
+  <text x="231" y="140" font-size="12.5" font-weight="700" text-anchor="middle" fill="#141313">Credentials</text>
+  <text x="231" y="166" font-size="10.5" text-anchor="middle" fill="#4a4644">username + password</text>
+  <text x="231" y="188" font-size="10.5" text-anchor="middle" fill="#4a4644">or an SSH private key</text>
+  <text x="231" y="212" font-size="10.5" text-anchor="middle" fill="#4a4644">Fernet-encrypted per field</text>
+  <text x="231" y="234" font-size="10.5" text-anchor="middle" fill="#4a4644">revealed only on request</text>
+
+  <rect x="424" y="114" width="330" height="132" rx="6" fill="#fcf9f8" stroke="#141313" stroke-width="2"/>
+  <text x="589" y="140" font-size="12.5" font-weight="700" text-anchor="middle" fill="#141313">Servers</text>
+  <text x="589" y="166" font-size="10.5" text-anchor="middle" fill="#4a4644">host and port</text>
+  <text x="589" y="188" font-size="10.5" text-anchor="middle" fill="#4a4644">ssh (22) or winrm (5985)</text>
+  <text x="589" y="212" font-size="10.5" text-anchor="middle" fill="#4a4644">one default credential</text>
+  <text x="589" y="234" font-size="10.5" text-anchor="middle" fill="#4a4644">auto-fills when picked</text>
+
+  <line x1="424" y1="180" x2="402" y2="180" stroke="#c84216" stroke-width="2" marker-end="url(#ao)"/>
+
+  <rect x="40" y="292" width="740" height="62" rx="6" fill="#ede9e6" stroke="#141313" stroke-width="1.5"/>
+  <text x="410" y="316" font-size="11" font-weight="700" text-anchor="middle" fill="#141313">What actually leaves the Vault</text>
+  <text x="410" y="338" font-size="10.5" text-anchor="middle" fill="#4a4644">Only the credential ID is stored on a workflow. The secret is read server-side, at run time.</text>
+
+  <text x="28" y="382" font-size="10" fill="#4a4644">Workflow JSON you export or share never contains a secret.</text>
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 330" width="900" height="330" font-family="'JetBrains Mono', ui-monospace, monospace" role="img" aria-label="The life of a script — editor, storage, action node, server">
+  <rect x="1" y="1" width="898" height="328" rx="10" fill="#ffffff" stroke="#141313" stroke-width="2"/>
+
+  <text x="28" y="40" font-size="15" font-weight="700" fill="#141313">From editor to server — the life of a script</text>
+  <line x1="28" y1="52" x2="872" y2="52" stroke="#d6d0cc" stroke-width="1.5"/>
+
+  <defs>
+    <marker id="a" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#141313"/>
+    </marker>
+  </defs>
+
+  <rect x="34" y="84" width="190" height="110" rx="6" fill="#fff3ee" stroke="#c84216" stroke-width="2"/>
+  <text x="129" y="112" font-size="12.5" font-weight="700" text-anchor="middle" fill="#c84216">Script Editor</text>
+  <text x="129" y="138" font-size="10" text-anchor="middle" fill="#4a4644">Monaco, in the browser</text>
+  <text x="129" y="158" font-size="10" text-anchor="middle" fill="#4a4644">Python · PowerShell · Shell</text>
+  <text x="129" y="178" font-size="10" text-anchor="middle" fill="#4a4644">each save bumps a version</text>
+
+  <rect x="248" y="84" width="190" height="110" rx="6" fill="#fcf9f8" stroke="#141313" stroke-width="2"/>
+  <text x="343" y="112" font-size="12.5" font-weight="700" text-anchor="middle" fill="#141313">Object storage</text>
+  <text x="343" y="138" font-size="10" text-anchor="middle" fill="#4a4644">the script body lives here</text>
+  <text x="343" y="158" font-size="10" text-anchor="middle" fill="#4a4644">the database keeps only</text>
+  <text x="343" y="178" font-size="10" text-anchor="middle" fill="#4a4644">the URL, never the bytes</text>
+
+  <rect x="462" y="84" width="190" height="110" rx="6" fill="#fcf9f8" stroke="#141313" stroke-width="2"/>
+  <text x="557" y="112" font-size="12.5" font-weight="700" text-anchor="middle" fill="#141313">Action node</text>
+  <text x="557" y="138" font-size="10" text-anchor="middle" fill="#4a4644">binds script + server</text>
+  <text x="557" y="158" font-size="10" text-anchor="middle" fill="#4a4644">+ credential from Vault</text>
+  <text x="557" y="178" font-size="10" text-anchor="middle" fill="#4a4644">+ its own parameters</text>
+
+  <rect x="676" y="84" width="190" height="110" rx="6" fill="#fcf9f8" stroke="#141313" stroke-width="2"/>
+  <text x="771" y="112" font-size="12.5" font-weight="700" text-anchor="middle" fill="#141313">Your server</text>
+  <text x="771" y="138" font-size="10" text-anchor="middle" fill="#4a4644">reached by SSH or WinRM</text>
+  <text x="771" y="158" font-size="10" text-anchor="middle" fill="#4a4644">stdout + stderr stream</text>
+  <text x="771" y="178" font-size="10" text-anchor="middle" fill="#4a4644">back to you, line by line</text>
+
+  <line x1="224" y1="139" x2="244" y2="139" stroke="#141313" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="438" y1="139" x2="458" y2="139" stroke="#141313" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="652" y1="139" x2="672" y2="139" stroke="#141313" stroke-width="2" marker-end="url(#a)"/>
+
+  <rect x="34" y="222" width="832" height="58" rx="6" fill="#ede9e6" stroke="#141313" stroke-width="1.5"/>
+  <text x="450" y="245" font-size="11" font-weight="700" text-anchor="middle" fill="#141313">One script can back many nodes, in many workflows</text>
+  <text x="450" y="266" font-size="10.5" text-anchor="middle" fill="#4a4644">Scripts are stored independently of the graphs that call them, so a fix lands everywhere at once.</text>
+
+  <text x="28" y="306" font-size="10" fill="#4a4644">Password parameters are injected as environment variables — never templated into the script text.</text>
+</svg>
