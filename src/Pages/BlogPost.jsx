@@ -150,6 +150,11 @@ const BlogPost = () => {
       ? post.cover
       : `${BASE}${post.cover}`
     : `${BASE}/og-image.png`;
+  const coverType = /\.jpe?g$/i.test(coverAbs)
+    ? "image/jpeg"
+    : /\.webp$/i.test(coverAbs)
+      ? "image/webp"
+      : "image/png";
 
   const articleSchema = JSON.stringify({
     "@context": "https://schema.org",
@@ -180,6 +185,8 @@ const BlogPost = () => {
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.description} />
         <meta property="og:image" content={coverAbs} />
+        <meta property="og:image:secure_url" content={coverAbs} />
+        <meta property="og:image:type" content={coverType} />
         <meta property="og:image:alt" content={post.title} />
         <meta property="og:site_name" content="Lagnajit Moharana" />
         {post.date ? (
@@ -192,6 +199,7 @@ const BlogPost = () => {
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.description} />
         <meta name="twitter:image" content={coverAbs} />
+        <meta name="twitter:image:alt" content={post.title} />
 
         <script type="application/ld+json">{articleSchema}</script>
       </Helmet>
