@@ -2,7 +2,7 @@
 title: "Autosage: Server Automation with a Built-In AI Copilot"
 description: "How I built Autosage — a platform to write scripts, chain them into visual workflows, and run them on real Linux and Windows servers — plus Autobot, an AI copilot that generates, investigates, and safely executes automations, and a public docs assistant grounded in RAG."
 date: 2026-07-04
-cover: cover.png
+cover: cover.svg
 tags: [AI, Infrastructure, Automation, LLM, RAG, System Design, Django]
 category: Deep dive
 ---

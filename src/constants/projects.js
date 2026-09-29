@@ -48,6 +48,22 @@ export const featuredProjects = [
 export const additionalProjects = [
   {
     id: "8",
+    year: "Sep 2026",
+    title: "Sgrep: AI-powered Semantic Search",
+    link: "https://lagnajit09.github.io/sgrep/",
+    github: "https://github.com/Lagnajit09/sgrep",
+    tech: [
+      "Jev",
+      "Classifier",
+      "RAG",
+      "Graphify",
+      "CLI",
+      "Python",
+      "Agentic AI",
+    ],
+  },
+  {
+    id: "8",
     year: "2025 - 2026",
     title: "SwiftPay-v2: Payment Application",
     link: "https://swiftpayz.web.app/",
