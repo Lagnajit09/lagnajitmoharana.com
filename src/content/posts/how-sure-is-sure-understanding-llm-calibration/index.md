@@ -1,5 +1,5 @@
 ---
-title: "How Sure Is Sure? Teaching a Small Model When to Doubt Itself"
+title: 'How Sure Is "Sure"? — Calibration, Uncertainty, and Knowledge in LLMs'
 description: "A hands-on experiment in calibrated confidence: a 150M-parameter student, a 7B teacher's doubts, six training targets, and three kinds of new data. What transfers, what doesn't, and why."
 date: 2026-10-27
 cover: cover.png
@@ -124,14 +124,14 @@ One more fix came later, in version 2.1. On about 1 in 10 teacher-labelled train
 
 With the data fixed, I trained six students. Everything is identical (model, data, steps, learning rate) except **the target each one learns from**:
 
-| Run   | What the student learns from                                            |
-| ----- | ----------------------------------------------------------------------- |
-| **A** | the human answer only (100% on one option)                              |
+| Run   | What the student learns from                                             |
+| ----- | ------------------------------------------------------------------------ |
+| **A** | the human answer only (100% on one option)                               |
 | **B** | the human answer, softened evenly (a small share spread over the others) |
-| **C** | the teacher's soft label                                                |
-| **D** | half A, half C                                                          |
-| **E** | the corrected teacher (`corrected_soft_label`)                          |
-| **F** | half A, half E                                                          |
+| **C** | the teacher's soft label                                                 |
+| **D** | half A, half C                                                           |
+| **E** | the corrected teacher (`corrected_soft_label`)                           |
+| **F** | half A, half E                                                           |
 
 Here's what they look like on one real training question, where the right answer is "distance" and the teacher favoured "directions":
 
@@ -141,15 +141,15 @@ C learns the teacher's mistake. D halves it. E fixes it but keeps the teacher's 
 
 The recipe, identical for every run:
 
-|                |                                                                                                     |
-| -------------- | --------------------------------------------------------------------------------------------------- |
-| Student        | ModernBERT-base (~150M) + one shared scorer (769 numbers)                                           |
+|                |                                                                                                      |
+| -------------- | ---------------------------------------------------------------------------------------------------- |
+| Student        | ModernBERT-base (~150M) + one shared scorer (769 numbers)                                            |
 | Training       | 3 epochs, batch 16, AdamW (weight decay 0.01), 10% warmup, gradient clipping at 1.0, mixed precision |
-| Learning rates | `3e-5` for the pre-trained body, `1e-3` for the new scorer                                          |
-| Kept epoch     | the one with the lowest validation log loss                                                         |
-| After training | 2 dials fitted on validation (one for choice, one plus a yes/no shift for yes/no)                   |
-| Repeats        | 3 seeds per run, averaged into an ensemble                                                          |
-| Cost           | about 20 minutes per run on a free Colab T4                                                         |
+| Learning rates | `3e-5` for the pre-trained body, `1e-3` for the new scorer                                           |
+| Kept epoch     | the one with the lowest validation log loss                                                          |
+| After training | 2 dials fitted on validation (one for choice, one plus a yes/no shift for yes/no)                    |
+| Repeats        | 3 seeds per run, averaged into an ensemble                                                           |
+| Cost           | about 20 minutes per run on a free Colab T4                                                          |
 
 ---
 
@@ -205,10 +205,10 @@ All students beat their teacher here, by a lot: about `89–92%` accuracy agains
 
 On SNIPS, the students score about as well as on MASSIVE, a dataset of the same kind they _did_ train on. Accuracy, single students, mean of 3 seeds:
 
-|                            | A     | B     | C         | D     | E         | F     |
-| -------------------------- | ----- | ----- | --------- | ----- | --------- | ----- |
-| MASSIVE (seen)             | 0.948 | 0.951 | 0.921     | 0.955 | 0.949     | 0.954 |
-| **SNIPS (never seen)**     | 0.949 | 0.948 | **0.951** | 0.953 | **0.960** | 0.950 |
+|                        | A     | B     | C         | D     | E         | F     |
+| ---------------------- | ----- | ----- | --------- | ----- | --------- | ----- |
+| MASSIVE (seen)         | 0.948 | 0.951 | 0.921     | 0.955 | 0.949     | 0.954 |
+| **SNIPS (never seen)** | 0.949 | 0.948 | **0.951** | 0.953 | **0.960** | 0.950 |
 
 A student trained to pick intents can pick intents from a label set it has never seen. C even does _better_ on SNIPS than on MASSIVE: on MASSIVE it inherits the teacher's mistakes between close labels, and SNIPS's seven intents are easy to tell apart.
 
