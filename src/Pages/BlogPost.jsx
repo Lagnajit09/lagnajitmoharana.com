@@ -40,13 +40,15 @@ const makeComponents = (post) => ({
     }
     return <p {...props}>{children}</p>;
   },
-  // External links open in a new tab; in-site links behave normally.
+  // External links and downloadable documents open in a new tab, so the reader
+  // doesn't lose the article; in-site links behave normally.
   a({ node, href, children, ...props }) {
-    const external = href && /^https?:\/\//.test(href);
+    const newTab =
+      href && (/^https?:\/\//.test(href) || /\.pdf($|[?#])/i.test(href));
     return (
       <a
         href={href}
-        {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+        {...(newTab ? { target: "_blank", rel: "noreferrer" } : {})}
         {...props}
       >
         {children}

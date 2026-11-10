@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { FaGithub } from "react-icons/fa";
 import { FiArrowUpRight, FiArrowLeft } from "react-icons/fi";
+import ProjectCard from "../components/ProjectCard";
 import { useNavigate } from "react-router-dom";
 import {
   featuredProjects,
@@ -22,7 +23,7 @@ const projectsSchema = JSON.stringify({
       "url": `${BASE}/projects`,
       "name": "Projects — Lagnajit Moharana",
       "description":
-        "Projects by Lagnajit Moharana — featured work like AutoSage (AI infrastructure platform), SageX (CLI) and AutoSage Docs; ML & AI research including the MiniGPT models trained from scratch with PyTorch; and additional full-stack apps.",
+        "Projects by Lagnajit Moharana — featured work like AutoSage (AI infrastructure platform), SageX (CLI) and Calibrated Typed Decisions (a published dataset and technical report on LLM calibration); ML & AI research including the MiniGPT models trained from scratch with PyTorch; and additional full-stack apps.",
       "isPartOf": { "@id": `${BASE}/#website` },
       "about": { "@id": `${BASE}/#person` },
     },
@@ -68,63 +69,6 @@ const SectionHeading = ({ eyebrow, title, subtitle }) => (
   </div>
 );
 
-const ProjectCard = ({ project }) => (
-  <div className="group border border-border bg-surface p-6 sm:p-8 transition-all duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg">
-    <div className="flex flex-wrap items-center gap-2 mb-5">
-      {project.version && (
-        <span className="inline-flex items-center border border-accent bg-accent/10 px-2 py-0.5 font-mono text-xs font-bold uppercase tracking-wide text-accent-deep">
-          {project.version}
-        </span>
-      )}
-      {project.status && (
-        <span className="inline-flex items-center gap-1.5 border border-accent bg-accent/10 px-2 py-0.5 font-mono text-xs font-bold uppercase tracking-wide text-accent-deep">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-          {project.status}
-        </span>
-      )}
-      {project.tech.slice(0, 8).map((item, i) => (
-        <span key={i} className="badge">
-          {item}
-        </span>
-      ))}
-    </div>
-
-    <div className="flex flex-wrap items-baseline justify-between gap-x-4">
-      <h3 className="font-display font-bold text-2xl sm:text-3xl text-fg group-hover:text-accent-deep transition-colors">
-        {project.title}
-      </h3>
-      <span className="font-mono text-sm text-accent-deep tabular-nums">
-        {project.year}
-      </span>
-    </div>
-    <p className="text-muted mt-3 leading-relaxed max-w-3xl">
-      {project.description}
-    </p>
-
-    <div className="flex flex-wrap items-center gap-3 mt-6">
-      {project.link && (
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noreferrer"
-          className="press inline-flex items-center gap-2 border border-border bg-bg px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wide text-fg shadow-hard-sm"
-        >
-          Live <FiArrowUpRight size={14} />
-        </a>
-      )}
-      {project.github && (
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noreferrer"
-          className="press inline-flex items-center gap-2 border border-border bg-bg px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wide text-fg shadow-hard-sm"
-        >
-          <FaGithub size={14} /> Code
-        </a>
-      )}
-    </div>
-  </div>
-);
 
 const ProjectRow = ({ row }) => (
   <div className="group grid grid-cols-1 sm:grid-cols-[6rem_1fr_auto] gap-x-6 gap-y-4 items-start py-7 border-b border-border-soft transition-colors hover:bg-surface -mx-4 px-4">
@@ -179,7 +123,7 @@ const Projects = () => {
         <title>Projects — Lagnajit Moharana</title>
         <meta
           name="description"
-          content="Projects by Lagnajit Moharana — featured work (AutoSage, SageX CLI, AutoSage Docs), ML & AI research (MiniGPT models trained from scratch with PyTorch), and additional full-stack apps."
+          content="Projects by Lagnajit Moharana — featured work (AutoSage, SageX CLI, Calibrated Typed Decisions), ML & AI research (MiniGPT models trained from scratch with PyTorch), and additional full-stack apps."
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={`${BASE}/projects`} />
@@ -189,7 +133,7 @@ const Projects = () => {
         <meta property="og:title" content="Projects — Lagnajit Moharana" />
         <meta
           property="og:description"
-          content="Featured work (AutoSage, SageX CLI, AutoSage Docs), ML & AI research (MiniGPT from scratch with PyTorch), and additional full-stack apps."
+          content="Featured work (AutoSage, SageX CLI, Calibrated Typed Decisions), ML & AI research (MiniGPT from scratch with PyTorch), and additional full-stack apps."
         />
         <meta property="og:image" content={`${BASE}/og-image.png`} />
         <meta property="og:image:alt" content="Projects — Lagnajit Moharana" />

@@ -18,6 +18,7 @@ import { resolve, dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
+const SITE = 'https://lagnajitmoharana.web.app'
 
 /**
  * Read intrinsic dimensions straight from an image file's header bytes
@@ -150,7 +151,61 @@ async function prerender() {
     console.log(`  Prerendered ${url.padEnd(12)} → ${outPath.replace(__dirname, '.').replace(/\\/g, '/')}`)
   }
 
+  writeSitemap()
   console.log('\nPrerender complete.')
+}
+
+/**
+ * Generate dist/sitemap.xml from the same route list we just rendered, plus any
+ * PDFs in public/. Generated rather than hand-maintained so it cannot go stale
+ * when a post is added or renamed.
+ */
+function writeSitemap() {
+  const today = new Date().toISOString().slice(0, 10)
+
+  const entries = routes.map((url) => {
+    const slug = url.replace(/^\//, '')
+    const isPost = slug && existsSync(resolve(__dirname, 'src/content/posts', slug, 'index.md'))
+    let lastmod = today
+    if (isPost) {
+      const md = readFileSync(resolve(__dirname, 'src/content/posts', slug, 'index.md'), 'utf-8')
+      const frontmatter = md.split(/^---\s*$/m)[1] || ''
+      const date = /^\s*date:\s*(\d{4}-\d{2}-\d{2})/m.exec(frontmatter)?.[1]
+      if (date) lastmod = date
+    }
+    return {
+      loc: `${SITE}${url}`,
+      lastmod,
+      changefreq: isPost ? 'yearly' : 'monthly',
+      priority: url === '/' ? '1.0' : isPost ? '0.7' : '0.8',
+    }
+  })
+
+  // Downloadable documents are indexable too.
+  try {
+    for (const f of readdirSync(resolve(__dirname, 'public'))) {
+      if (f.toLowerCase().endsWith('.pdf')) {
+        entries.push({ loc: `${SITE}/${f}`, lastmod: today, changefreq: 'yearly', priority: '0.5' })
+      }
+    }
+  } catch {
+    /* no public dir */
+  }
+
+  const xml = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ...entries.map(
+      (e) =>
+        `  <url>\n    <loc>${e.loc}</loc>\n    <lastmod>${e.lastmod}</lastmod>\n` +
+        `    <changefreq>${e.changefreq}</changefreq>\n    <priority>${e.priority}</priority>\n  </url>`
+    ),
+    '</urlset>',
+    '',
+  ].join('\n')
+
+  writeFileSync(resolve(__dirname, 'dist/sitemap.xml'), xml)
+  console.log(`  Sitemap     → ./dist/sitemap.xml (${entries.length} urls)`)
 }
 
 prerender().catch((err) => {

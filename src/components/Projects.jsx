@@ -1,56 +1,14 @@
-import { FiArrowUpRight, FiArrowRight } from "react-icons/fi";
-import { FaGithub } from "react-icons/fa";
+import { FiArrowRight } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import { topProjects, mlProjects } from "../constants/projects";
+import ProjectCard from "./ProjectCard";
+import {
+  featuredProjects,
+  mlProjects,
+  additionalProjects,
+} from "../constants/projects";
 
-function ProjectCard({ project }) {
-  return (
-    <div className="group border border-border bg-surface p-6 sm:p-8 transition-all duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg">
-      <div className="flex flex-wrap items-center gap-2 mb-5">
-        {project.version && (
-          <span className="inline-flex items-center border border-accent bg-accent/10 px-2 py-0.5 font-mono text-xs font-bold uppercase tracking-wide text-accent-deep">
-            {project.version}
-          </span>
-        )}
-        {project.tech.slice(0, 8).map((item, i) => (
-          <span key={i} className="badge">
-            {item}
-          </span>
-        ))}
-      </div>
-
-      <h3 className="font-display font-bold text-2xl sm:text-3xl text-fg group-hover:text-accent-deep transition-colors">
-        {project.title}
-      </h3>
-      <p className="text-muted mt-3 leading-relaxed max-w-3xl">
-        {project.description}
-      </p>
-
-      <div className="flex flex-wrap items-center gap-3 mt-6">
-        {project.link && (
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noreferrer"
-            className="press inline-flex items-center gap-2 border border-border bg-bg px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wide text-fg shadow-hard-sm"
-          >
-            Live <FiArrowUpRight size={14} />
-          </a>
-        )}
-        {project.github && (
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noreferrer"
-            className="press inline-flex items-center gap-2 border border-border bg-bg px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wide text-fg shadow-hard-sm"
-          >
-            <FaGithub size={14} /> Code
-          </a>
-        )}
-      </div>
-    </div>
-  );
-}
+const totalProjects =
+  featuredProjects.length + mlProjects.length + additionalProjects.length;
 
 function Projects() {
   const navigate = useNavigate();
@@ -80,13 +38,16 @@ function Projects() {
       </div>
 
       <div className="flex flex-col gap-6">
-        {topProjects.map((project, index) => (
-          <ProjectCard key={index} project={project} />
+        {featuredProjects.map((project) => (
+          <ProjectCard key={project.id} project={project} />
         ))}
       </div>
 
       {/* ML Journey & Projects */}
-      <div id="ml-journey" className="flex items-center gap-4 mb-8 mt-24 scroll-mt-28">
+      <div
+        id="ml-journey"
+        className="flex items-center gap-4 mb-8 mt-24 scroll-mt-28"
+      >
         <span className="eyebrow whitespace-nowrap">Learning in Public</span>
         <span className="h-px flex-1 bg-border" />
       </div>
@@ -102,9 +63,29 @@ function Projects() {
       </div>
 
       <div className="flex flex-col gap-6">
-        {mlProjects.map((project, index) => (
-          <ProjectCard key={index} project={project} />
+        {mlProjects.map((project) => (
+          <ProjectCard key={project.version} project={project} />
         ))}
+      </div>
+
+      {/* Pointer to the full archive */}
+      <div className="mt-16 border border-border bg-panel p-6 sm:p-8 shadow-hard flex flex-wrap items-center justify-between gap-x-8 gap-y-6">
+        <div className="min-w-0">
+          <h3 className="font-display font-bold text-2xl sm:text-3xl text-fg">
+            There&apos;s more in the archive
+          </h3>
+          <p className="text-muted mt-2 leading-relaxed max-w-xl">
+            {totalProjects} projects in total — flagship platforms, the full ML
+            journey, CLIs and full-stack apps, each with live demos, source and
+            write-ups.
+          </p>
+        </div>
+        <button
+          onClick={() => navigate("/projects")}
+          className="press shrink-0 inline-flex items-center gap-2 bg-accent text-white border border-border px-5 py-3 font-mono text-sm font-semibold uppercase tracking-wide shadow-hard-sm"
+        >
+          Browse all projects <FiArrowRight size={15} />
+        </button>
       </div>
     </section>
   );

@@ -25,6 +25,8 @@ So I set out to build a small model whose confidence actually means something. T
 
 It didn't work the first time. Fixing it taught me more than the success would have.
 
+The formal version of everything below — every result table, the threats to validity and the appendices — is in the [technical report](/calibrated-typed-decisions-technical-report.pdf) (PDF, 24 pages).
+
 ---
 
 ## What calibration means, in one picture
@@ -244,6 +246,41 @@ That's the clearest way I can put the result: **calibration is about meaning wha
 
 A model can learn to express uncertainty without learning the underlying skill. A weather forecaster who says "30% rain" every day, in a city where it rains 30% of days, is perfectly calibrated and completely useless. On PubMedQA, my students are close to that corner. No dial fixes it; only more knowledge does.
 
+### Neither did a bigger student
+
+If averaging can't supply a missing skill, maybe size can. So I repeated E and F with **ModernBERT-large** — about 395M parameters against the base student's 150M, roughly 2.6× bigger — same recipe, same data, three seeds each. Then, because fully fine-tuned large F came out _worse_ on PubMedQA, I trained F once more with **LoRA** (rank 16, alpha 32, on the attention and feed-forward layers of all 28 blocks: 7,196,672 trainable numbers, about `1.79%` of the body).
+
+Both questions were written down before the runs. Both answers came back no.
+
+| Ensembles      | Familiar acc | Familiar LL | SNIPS acc | SNIPS LL  | PubMedQA acc | PubMedQA LL |
+| -------------- | ------------ | ----------- | --------- | --------- | ------------ | ----------- |
+| E, base        | 0.918        | 0.241       | 0.965     | 0.114     | 0.587        | 0.926       |
+| E, large       | 0.922        | 0.218       | 0.972     | 0.085     | 0.571        | 0.945       |
+| F, base        | 0.928        | 0.225       | 0.958     | 0.126     | **0.595**    | **0.899**   |
+| F, large       | 0.929        | 0.213       | **0.976** | 0.086     | 0.561        | 0.995       |
+| F, large, LoRA | 0.918        | 0.225       | 0.972     | **0.081** | 0.594        | 0.941       |
+
+**Capacity bought near transfer, not far transfer.** On the new label set the large students are genuinely better: under both checks, large beat base on SNIPS log loss for both E and F, on SNIPS accuracy for F, and on familiar log loss for E. LoRA-F beat base F on SNIPS accuracy and log loss too.
+
+On PubMedQA, nothing. No larger student was reliably better than its base counterpart, and fully fine-tuned large F was clearly _worse_ — log loss `0.995` against `0.899`, worse in 8 of 9 seed pairings and in every bootstrap resample, with ECE worse in all 9. LoRA recovered much of that: it beat full fine-tuning on PubMedQA accuracy, ECE and log loss in 1,000 of 1,000 resamples. But its three seeds ranged from `0.866` to `1.103` in log loss — the best _and_ the worst PubMedQA students I trained — so only 5 of 9 pairings agreed and the seed check never settled it.
+
+On a new kind of judgment, the small base F is still the best student I have. Capacity is not the missing piece.
+
+---
+
+## The datasets I didn't use
+
+The PubMedQA gap is a missing skill: none of the six training sources ever asks whether a text _supports a claim_. So I went looking for a training source of that shape, deliberately not biomedical, so that a PubMedQA gain would show the skill transferring rather than the domain. Each candidate was measured against rules fixed _before_ I inspected it.
+
+- **ContractNLI** (legal contracts, exactly the right shape, CC BY 4.0): failed 2 of 4 rules. The label could be guessed from the statement alone `68.1%` of the time against a `50.0%` majority baseline on dev, and `65.9%` against `46.3%` on test — well past my +10-point limit. Truncating to 1,600 characters also left only `70.5–81.7%` of evidence rows still containing their evidence, against a floor of `80%`. (It has just 17 fixed hypotheses, 5 of them never contradicted.)
+- **COSMOS QA** (reading comprehension, CC BY 4.0): failed 1 of 8 rules. "None of the above" appears in `75.5%` of training questions but is right in only `7.8%` of them, against a rule of 10–40%. A student would learn never to pick it.
+- **HWU64** (suggested to me as an unseen intent test): it is the text release of SLURP, the dataset MASSIVE was built from — and MASSIVE was already in my training data.
+- **WANLI** (excellent quality, the best fit on paper): no license stated. The field is blank on every copy and there is none on the project pages. I can't build on data without one.
+
+**SNIPS 2017** was the one that passed, and only as an evaluation set: CC0 1.0 on the authors' repository, and `0` of its 1,050 requests appear word-for-word in the training data.
+
+The two NLI candidates are textbook **annotation artifacts**: when a label can be guessed from part of the input, a student learns the cue instead of the judgment. Every one of these checks took minutes and no GPU. Building any of the rejected sources into the dataset would have cost hours of teacher scoring and retraining, to teach the wrong thing.
+
 ---
 
 ## What I actually learned
@@ -254,28 +291,34 @@ A model can learn to express uncertainty without learning the underlying skill. 
 - **No single target wins everywhere.** More weight on the right answer helps on familiar data; more of the teacher's shape helps on new label sets. Pick by where the model will be used.
 - **One seed lies.** Retraining alone moved results by up to 7.6 accuracy points. Every claim in the dataset card now has to hold in every seed _and_ in a bootstrap.
 - **A dial fitted on one kind of data doesn't automatically travel.** The same dials that made A honest on familiar data made it underconfident on PubMedQA.
+- **Sharper targets trade home performance for transfer.** The more one-hot weight a target carries, the better it does on familiar data and the worse on a new label set. A larger, fully fine-tuned model amplifies that trade-off rather than escaping it.
+- **Capacity helped near transfer, not far transfer.** A 2.6× larger student was better on a new label set and no better on a new kind of judgment — and fully fine-tuning it made the blended target measurably worse.
 - **Calibrated is not the same as knowledgeable.** My students are honest where they have the skill and fairly honest where they don't, but honesty can't replace the skill.
-- **Measure the data before building with it.** Three of four candidate datasets failed checks that took minutes to run.
+- **Measure the data before building with it.** Four candidate sources failed checks that took minutes and no GPU each.
 
 ---
 
 ## What's next
 
-The open problem is skill, not calibration.
+The open problem is skill, not calibration — and after the larger students, the remaining lever is clearly data, not size.
 
 **Calibration can tell you whether a model knows when it might be wrong. It cannot give the model knowledge it never learned.**
 
-Two levers are left:
+What's left to try:
 
-1. **A bigger student.** ModernBERT-large has about 2.6× the parameters and more general reading ability from pre-training. With LoRA, it fits on a free GPU.
-2. **The right training data.** A dataset that teaches "does this support that?" without being biomedical, so a PubMedQA gain would show the _skill_ transferred. WANLI is the best candidate, if its license question can be resolved.
+1. **The right training data.** A source that teaches "does this text support this claim?" without being biomedical, so a PubMedQA gain would show the _skill_ transferred, then retraining A, E and F on it. WANLI is still the best candidate on quality, if its license question can ever be resolved.
+2. **A sweep of the one-hot share** between E (0%) and F (50%), and beyond, to map the home-versus-transfer trade-off properly instead of at two points.
+3. **Dials that travel** — detecting distribution shift, or shrinking temperatures towards 1 on unfamiliar data, so a dial fitted at home stops hurting away from it.
+4. **More seeds for LoRA**, and a pre-registered test suited to high-variance methods, to settle what three seeds couldn't.
+5. **Leave-one-source-out evaluation**, to measure near transfer without SNIPS's easier questions.
+6. **Publishing the best students as models**, not just the dataset.
 
-> **The receipts:** v1, right answers + one dial: accuracy `0.907`, log loss `0.297`, best of the first round · GoEmotions teacher disagreed with humans on `38.5%` of questions · 2 dials beat 12 (`0.242` vs `0.252`) · retraining alone moved held-out accuracy by `7.6` points · familiar data: A `0.221` ≈ F `0.225` · new label set: E best, `0.114` · new kind of judgment: F best, `0.899` against a `0.937` know-nothing baseline · F's ensemble ECE: `0.006` familiar, `0.020` SNIPS, `0.051` PubMedQA · the 7B teacher on PubMedQA: `777` of 1,000 answers at 90%+ confidence, right about 71% of the time.
+> **The receipts:** v1, right answers + one dial: accuracy `0.907`, log loss `0.297`, best of the first round · GoEmotions teacher disagreed with humans on `38.5%` of questions · 2 dials beat 12 (`0.242` vs `0.252`) · retraining alone moved held-out accuracy by `7.6` points · familiar data: A `0.221` ≈ F `0.225` · new label set: E best, `0.114` · new kind of judgment: F best, `0.899` against a `0.937` know-nothing baseline · F's ensemble ECE: `0.006` familiar, `0.020` SNIPS, `0.051` PubMedQA · the 7B teacher on PubMedQA: `777` of 1,000 answers at 90%+ confidence, right about 71% of the time · a 2.6× larger student: better on SNIPS (`0.081` log loss with LoRA), no better on PubMedQA, and fully fine-tuned large F worse there (`0.995` against `0.899`).
 
 ---
 
 _Data: CLINC150, Banking77, MASSIVE, GoEmotions, Amazon Polarity and SciCite (training); PubMedQA (held-out) and SNIPS (evaluation only). Licenses and citations for each are on the dataset card._
 
-_Built with `PyTorch`, `transformers`, and `datasets` on Google Colab's free tier. The dataset, with every result table and caveat on its card, is on Hugging Face: [`m-lagnajit/calibrated-typed-decisions`](https://huggingface.co/datasets/m-lagnajit/calibrated-typed-decisions). The notebooks are on [GitHub](https://github.com/Lagnajit09/100x_AI_ML/tree/main/calibrated-typed-decision)._
+_Built with `PyTorch`, `transformers`, and `datasets` on Google Colab's free tier. The dataset, with every result table and caveat on its card, is on Hugging Face: [`m-lagnajit/calibrated-typed-decisions`](https://huggingface.co/datasets/m-lagnajit/calibrated-typed-decisions). The notebooks are on [GitHub](https://github.com/Lagnajit09/100x_AI_ML/tree/main/calibrated-typed-decision). The full technical report, with the complete result tables, threats to validity and appendices, is [here](/calibrated-typed-decisions-technical-report.pdf)._
 
 _lagnajit moharana._
