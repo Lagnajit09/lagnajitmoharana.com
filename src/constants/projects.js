@@ -36,8 +36,26 @@ export const featuredProjects = [
     id: "calibrated-typed-decisions",
     year: "Nov, 2026",
     title: "Calibrated Typed Decisions",
-    link: "https://huggingface.co/datasets/m-lagnajit/calibrated-typed-decisions",
-    linkLabel: "Dataset",
+    link: "https://huggingface.co/collections/m-lagnajit/calibrated-typed-decision",
+    linkLabel: "Collection",
+    links: [
+      {
+        label: "Dataset",
+        href: "https://huggingface.co/datasets/m-lagnajit/calibrated-typed-decisions",
+      },
+      {
+        label: "Student F",
+        href: "https://huggingface.co/m-lagnajit/ctd-student-f",
+      },
+      {
+        label: "Student E",
+        href: "https://huggingface.co/m-lagnajit/ctd-student-e",
+      },
+      {
+        label: "Write-up",
+        href: "/how-sure-is-sure-understanding-llm-calibration",
+      },
+    ],
     github:
       "https://github.com/Lagnajit09/100x_AI_ML/tree/main/calibrated-typed-decision",
     report: "/calibrated-typed-decisions-technical-report.pdf",
@@ -51,7 +69,7 @@ export const featuredProjects = [
       "HuggingFace",
     ],
     description:
-      "A published dataset and a 24-page technical report asking whether a 150M-parameter classifier can learn honest confidence from a 7B teacher's soft labels. Over 30 students across six training targets, evaluated on familiar data, an unseen label set and an unseen kind of judgment — with every claim required to hold across three seeds and a paired bootstrap before it counts.",
+      "A published dataset, two released models and a technical report asking whether a 150M-parameter classifier can learn honest confidence from a 7B teacher's soft labels. Over 30 students across six training targets, evaluated on familiar data, an unseen label set and an unseen kind of judgment — every claim required to hold across three seeds and a paired bootstrap before it counts. The two recommended students ship as three-seed ensembles with their fitted temperature dials.",
   },
 ];
 

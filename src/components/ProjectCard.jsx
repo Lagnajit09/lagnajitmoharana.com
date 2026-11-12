@@ -6,9 +6,19 @@ import { FiArrowUpRight, FiFileText } from "react-icons/fi";
  * "Selected Work" section so the two can never drift apart.
  *
  * Optional fields: `version` and `status` render as badges; `linkLabel`
- * overrides the default "Live" label (e.g. "Dataset"); `report` adds an
- * accented button for a downloadable write-up.
+ * overrides the default "Live" label (e.g. "Collection"); `links` is an array
+ * of extra `{ label, href }` buttons; `report` adds an accented button for a
+ * downloadable write-up, rendered last.
  */
+
+// Leave the site only for external URLs and downloadable files; in-site routes
+// navigate in place.
+const isAway = (href) => /^https?:\/\//.test(href) || /\.pdf($|[?#])/i.test(href);
+const awayProps = (href) =>
+  isAway(href) ? { target: "_blank", rel: "noreferrer" } : {};
+
+const BTN =
+  "press inline-flex items-center gap-2 border border-border bg-bg px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wide text-fg shadow-hard-sm";
 const ProjectCard = ({ project }) => (
   <div className="group border border-border bg-surface p-6 sm:p-8 transition-all duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg">
     <div className="flex flex-wrap items-center gap-2 mb-5">
@@ -46,30 +56,24 @@ const ProjectCard = ({ project }) => (
 
     <div className="flex flex-wrap items-center gap-3 mt-6">
       {project.link && (
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noreferrer"
-          className="press inline-flex items-center gap-2 border border-border bg-bg px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wide text-fg shadow-hard-sm"
-        >
+        <a href={project.link} {...awayProps(project.link)} className={BTN}>
           {project.linkLabel || "Live"} <FiArrowUpRight size={14} />
         </a>
       )}
+      {project.links?.map(({ label, href }) => (
+        <a key={label} href={href} {...awayProps(href)} className={BTN}>
+          {label} <FiArrowUpRight size={14} />
+        </a>
+      ))}
       {project.github && (
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noreferrer"
-          className="press inline-flex items-center gap-2 border border-border bg-bg px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wide text-fg shadow-hard-sm"
-        >
+        <a href={project.github} {...awayProps(project.github)} className={BTN}>
           <FaGithub size={14} /> Code
         </a>
       )}
       {project.report && (
         <a
           href={project.report}
-          target="_blank"
-          rel="noreferrer"
+          {...awayProps(project.report)}
           className="press inline-flex items-center gap-2 border border-border bg-accent px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wide text-white shadow-hard-sm"
         >
           <FiFileText size={14} /> Report
