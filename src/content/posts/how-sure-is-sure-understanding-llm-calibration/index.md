@@ -283,6 +283,38 @@ The two NLI candidates are textbook **annotation artifacts**: when a label can b
 
 ---
 
+## Two students you can actually use
+
+Results you can only read are half a result, so I published the two recommended students: **[`ctd-student-f`](https://huggingface.co/m-lagnajit/ctd-student-f)** for data like the training sources, and **[`ctd-student-e`](https://huggingface.co/m-lagnajit/ctd-student-e)** for a new label set of the same kind. Both sit in the [`calibrated-typed-decision` collection](https://huggingface.co/collections/m-lagnajit/calibrated-typed-decision) alongside the dataset.
+
+The important detail: **each repository holds all three seeds, not one lucky run.** The three students' dialed chances are averaged on the way out, so what you download _is_ the ensemble this post has been measuring. Weights ship as 16-bit `safetensors` — 16-bit because it takes a repository from roughly 1.2 GB to 0.9 GB while keeping about three significant digits, and `safetensors` because PyTorch's usual `.pt` files are written with `pickle`, which can execute code when a file is loaded.
+
+One thing the experiments never stored was the dials themselves — every analysis refitted them from saved validation predictions. So for the release each published student was re-run over the `1,799` validation questions and its dials refitted against the exact 16-bit weights people download:
+
+| Student | Choice temperature (seeds 0 / 1 / 2) | Yes/no temperature, shift (seeds 0 / 1 / 2) |
+| ------- | ------------------------------------ | ------------------------------------------- |
+| **F**   | 0.786 / 0.821 / 0.803                | 0.821, +0.2 / 0.803, +0.9 / 0.858, +0.5      |
+| **E**   | 0.644 / 0.704 / 0.704                | 0.630, +0.65 / 0.673, +0.9 / 0.735, +0.55    |
+
+Two things fall out of that table. **Every temperature is below 1**, which means these students are slightly _under_confident on their own and the dial sharpens them rather than toning them down — the opposite of the overconfident networks this post opened with. E needs more sharpening than F, because its target has no one-hot half and its raw chances stay softer, closer to the teacher's. And **every yes/no shift is positive**: left alone, the students say "yes" slightly too rarely.
+
+Here is what the files people actually download score, measured through the package's own `predict()`:
+
+| Ensemble         | Accuracy | ECE   | Log loss | In this post |
+| ---------------- | -------- | ----- | -------- | ------------ |
+| F, familiar data | 0.929    | 0.015 | 0.223    | 0.225        |
+| F, SNIPS         | 0.958    | 0.020 | 0.126    | 0.126        |
+| F, PubMedQA      | 0.608    | 0.085 | 0.910    | 0.899        |
+| E, familiar data | 0.920    | 0.014 | 0.237    | 0.241        |
+| E, SNIPS         | 0.965    | 0.020 | 0.114    | 0.114        |
+| E, PubMedQA      | 0.607    | 0.097 | 0.918    | 0.926        |
+
+On SNIPS both published ensembles match this post to three decimals — same students, after 16-bit rounding, a different code path and newly fitted dials. On familiar data and PubMedQA they drift a little, because the numbers above used the _original_ seeds 1 and 2 while the release ships the retrained ones. The gap is largest exactly where training luck is largest: F's published PubMedQA log loss of `0.910` sits comfortably inside the `0.888`–`0.953` range its single students covered. The recommendation doesn't change — F for familiar data, E for a new label set.
+
+Nothing shipped until a list of checks passed: the package's token sequence matched the training notebook's for 300 of 300 questions (including the 187 that had to be cut to fit 512 tokens), the rebuilt SNIPS question set hashed to the same fingerprint, predictions on 64 held-out questions stayed within `0.05` and never changed the top pick, each ensemble beat its members' average as Jensen's inequality requires, and the model card's usage example was run end to end in a brand-new Colab session — a stranger's first run.
+
+---
+
 ## What I actually learned
 
 - **Calibration and confidence are not the same thing.** A model can sound uncertain without being well calibrated, and a calibrated model is one whose probabilities have meaning over many predictions.
@@ -311,14 +343,13 @@ What's left to try:
 3. **Dials that travel** — detecting distribution shift, or shrinking temperatures towards 1 on unfamiliar data, so a dial fitted at home stops hurting away from it.
 4. **More seeds for LoRA**, and a pre-registered test suited to high-variance methods, to settle what three seeds couldn't.
 5. **Leave-one-source-out evaluation**, to measure near transfer without SNIPS's easier questions.
-6. **Publishing the best students as models**, not just the dataset.
 
-> **The receipts:** v1, right answers + one dial: accuracy `0.907`, log loss `0.297`, best of the first round · GoEmotions teacher disagreed with humans on `38.5%` of questions · 2 dials beat 12 (`0.242` vs `0.252`) · retraining alone moved held-out accuracy by `7.6` points · familiar data: A `0.221` ≈ F `0.225` · new label set: E best, `0.114` · new kind of judgment: F best, `0.899` against a `0.937` know-nothing baseline · F's ensemble ECE: `0.006` familiar, `0.020` SNIPS, `0.051` PubMedQA · the 7B teacher on PubMedQA: `777` of 1,000 answers at 90%+ confidence, right about 71% of the time · a 2.6× larger student: better on SNIPS (`0.081` log loss with LoRA), no better on PubMedQA, and fully fine-tuned large F worse there (`0.995` against `0.899`).
+> **The receipts:** v1, right answers + one dial: accuracy `0.907`, log loss `0.297`, best of the first round · GoEmotions teacher disagreed with humans on `38.5%` of questions · 2 dials beat 12 (`0.242` vs `0.252`) · retraining alone moved held-out accuracy by `7.6` points · familiar data: A `0.221` ≈ F `0.225` · new label set: E best, `0.114` · new kind of judgment: F best, `0.899` against a `0.937` know-nothing baseline · F's ensemble ECE: `0.006` familiar, `0.020` SNIPS, `0.051` PubMedQA · the 7B teacher on PubMedQA: `777` of 1,000 answers at 90%+ confidence, right about 71% of the time · a 2.6× larger student: better on SNIPS (`0.081` log loss with LoRA), no better on PubMedQA, and fully fine-tuned large F worse there (`0.995` against `0.899`) · two students released, three seeds each, measured on the downloadable files: F `0.223` familiar, E `0.114` SNIPS.
 
 ---
 
 _Data: CLINC150, Banking77, MASSIVE, GoEmotions, Amazon Polarity and SciCite (training); PubMedQA (held-out) and SNIPS (evaluation only). Licenses and citations for each are on the dataset card._
 
-_Built with `PyTorch`, `transformers`, and `datasets` on Google Colab's free tier. The dataset, with every result table and caveat on its card, is on Hugging Face: [`m-lagnajit/calibrated-typed-decisions`](https://huggingface.co/datasets/m-lagnajit/calibrated-typed-decisions). The notebooks are on [GitHub](https://github.com/Lagnajit09/100x_AI_ML/tree/main/calibrated-typed-decision). The full technical report, with the complete result tables, threats to validity and appendices, is [here](/calibrated-typed-decisions-technical-report.pdf)._
+_Built with `PyTorch`, `transformers`, and `datasets` on Google Colab's free tier. Everything lives in the [`calibrated-typed-decision` collection](https://huggingface.co/collections/m-lagnajit/calibrated-typed-decision) on Hugging Face: the [dataset](https://huggingface.co/datasets/m-lagnajit/calibrated-typed-decisions), with every result table and caveat on its card, and the two released students, [`ctd-student-f`](https://huggingface.co/m-lagnajit/ctd-student-f) and [`ctd-student-e`](https://huggingface.co/m-lagnajit/ctd-student-e). The notebooks are on [GitHub](https://github.com/Lagnajit09/100x_AI_ML/tree/main/calibrated-typed-decision), and the full technical report — complete result tables, threats to validity and appendices — is [here](/calibrated-typed-decisions-technical-report.pdf)._
 
 _lagnajit moharana._
